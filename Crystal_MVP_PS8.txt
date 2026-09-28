@@ -1,0 +1,173 @@
+CRYSTAL AI — PS8 OPEN CHALLENGE
+TatHack '26 MVP Definition
+
+STATUS
+Working MVP definition for Crystal under PS8 — Open Challenge.
+The official PS8 gives freedom over domain, technology, and architecture, provided the project fits the Asteria theme. This document defines our proposed implementation, not an organizer-mandated specification.
+
+1. ONE-LINE PROJECT
+Crystal is a distributed edge-AI network in which multiple ordinary computers act as intelligent nodes, keeping private personal memory locally while sharing/retrieving permitted knowledge across the network.
+
+2. ASTERIA CONNECTION
+Asteria describes worlds colliding and transitions between realities. Crystal interprets this as exploring a different computing reality: instead of treating centralized cloud servers as the only place where intelligence, storage, and knowledge live, participating edge devices can collectively provide these capabilities.
+
+3. CORE MVP
+The MVP must prove four things:
+
+A. CRYSTAL NODE
+Each participating laptop can run the same Crystal node software.
+A node has:
+- Node identity
+- AI/chat interface
+- Local storage
+- Local personal memory
+- Network knowledge storage
+- Network communication capability
+
+B. NODE-TO-NODE DISCOVERY AND COMMUNICATION
+At least 2–3 Crystal nodes can discover/connect to one another and exchange requests.
+A node must be able to ask another node whether it contains relevant knowledge and request permitted information.
+
+C. DISTRIBUTED KNOWLEDGE RETRIEVAL
+A small demonstration dataset is divided across nodes.
+The user interacts with Node A.
+If Node A does not have the required information, it queries another node, retrieves the relevant knowledge, and uses it to answer the user.
+The demo must visibly show that the information originated from another node.
+
+D. PRIVATE PERSONAL MEMORY BOUNDARY
+Each node has a personal-memory compartment separate from network knowledge.
+Personal memory remains local to the owning node.
+Another node attempting to access it must be denied.
+The UI should make the distinction between PRIVATE MEMORY and NETWORK KNOWLEDGE visible.
+
+4. MINIMUM DEMO
+Use 3 laptops if available; otherwise simulate 3 nodes on separate processes/machines.
+
+Node A:
+- User interface
+- Personal memory for User A
+- Some knowledge
+
+Node B:
+- Different knowledge
+
+Node C:
+- Different knowledge
+
+Demo sequence:
+1. Start all Crystal nodes.
+2. Show the network with connected nodes.
+3. Ask Node A a question whose answer is stored on Node B/C.
+4. Node A discovers/searches the network.
+5. The relevant node responds.
+6. Node A gives the synthesized answer and identifies the source node.
+7. Ask Node A for a personal fact stored in its private memory.
+8. Demonstrate that another node cannot access that private memory.
+
+5. DATA MODEL
+Keep the demonstration dataset small.
+Example:
+Node A: document/topic set A
+Node B: document/topic set B
+Node C: document/topic set C
+
+Do NOT attempt to mirror the whole Internet.
+Do NOT attempt real-world Internet-scale decentralization in the MVP.
+
+6. SECURITY MVP
+The MVP should demonstrate concrete boundaries, not make an unverified claim of perfect security.
+
+Required:
+- Personal memory is node-local.
+- Network requests cannot directly read personal memory.
+- Nodes authenticate/identify requests sufficiently for the demo.
+- Shared knowledge is explicitly marked as shareable.
+- Access denial is visible when a private resource is requested.
+
+Encryption at rest may be implemented if time permits, but it is not the core proof of the MVP.
+
+7. AI MODEL
+The AI model is an implementation choice.
+The architecture must allow the same Crystal node software to use the selected open/local model or compatible model interface on every node.
+Do not make the MVP depend on training a new foundation model.
+
+The important innovation to demonstrate is the NODE ARCHITECTURE, not a new language model.
+
+8. WHAT IS NOT MVP
+These are future/bonus ideas and must not block the working submission:
+- Internet-scale deployment
+- Millions of nodes
+- Replacing conventional data centers
+- Physical Crystal Box hardware
+- Global decentralized web
+- Full peer-to-peer search engine
+- Automatic replication/consensus across a huge network
+- Blockchain/token economics
+- Complete end-to-end encrypted global Internet
+- Real-time ingestion of YouTube/blog/web-scale data
+- Production-grade security certification
+
+9. SUCCESS CRITERIA
+The MVP is successful if a judge can see, in one short demo:
+
+1. Multiple independent Crystal nodes are running.
+2. Nodes communicate.
+3. Knowledge is distributed rather than duplicated everywhere.
+4. A node can retrieve knowledge from another node.
+5. The AI uses retrieved network knowledge to answer.
+6. Personal memory remains isolated to its owner.
+7. An unauthorized private-memory request is rejected.
+8. The architecture is understandable enough to explain how it could scale beyond the demo.
+
+10. DEMO MESSAGE
+The project should be presented as:
+"What if intelligent edge devices could collectively form a distributed knowledge and computing layer, while keeping each person's private AI memory under their own control?"
+
+Do not claim that the MVP has created a replacement for the Internet or cloud data centers. Demonstrate the architectural primitive that could be developed toward that vision.
+
+11. IMPLEMENTATION PRINCIPLE
+INSPECT → DESIGN → IMPLEMENT → VERIFY
+
+Keep the first working version extremely small.
+Prioritize a reliable 3-node demonstration over additional features.
+Preserve a clean separation between:
+- AI/model layer
+- personal memory
+- network knowledge
+- node communication
+- user interface
+
+12. ANTIGRAVITY SCOPE
+Recommended implementation should be split into controlled prompts rather than one giant "build Crystal" prompt.
+
+Target: approximately 10–14 prompts.
+
+Suggested sequence:
+1. Repository/project bootstrap and architecture inspection
+2. Crystal node runtime and configuration
+3. Local storage/data model
+4. Personal-memory compartment
+5. Network-knowledge compartment
+6. Node discovery
+7. Node-to-node request/response protocol
+8. Distributed knowledge retrieval
+9. AI integration
+10. Chat orchestration / retrieval flow
+11. Security/access boundary
+12. Multi-node demo setup
+13. UI/network observability
+14. End-to-end testing, README, and final audit
+
+Each prompt should be independently verifiable and should instruct Antigravity to inspect before editing, reuse existing code, avoid unnecessary dependencies, preserve working behaviour, report changed files, and run relevant checks.
+
+13. DEFINITION OF DONE
+Crystal MVP is DONE only when:
+- A clean setup can launch the required nodes.
+- Nodes can communicate.
+- A knowledge query can cross node boundaries.
+- The answer can be traced to the remote node.
+- Personal memory works locally.
+- Unauthorized personal-memory access is rejected.
+- The main demo can be repeated reliably.
+- README explains setup, architecture, demo flow, and limitations.
+- Git diff/status contains only intended changes.
