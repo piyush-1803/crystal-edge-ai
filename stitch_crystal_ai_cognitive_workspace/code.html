@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Crystal · Your private AI</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "error-container": "#ffdad6",
+            "primary-fixed-dim": "#b9c3ff",
+            "tertiary-container": "#757571",
+            "on-surface": "#1a1c1a",
+            "surface-variant": "#e3e2e0",
+            "background": "#faf9f6",
+            "surface-container-low": "#f4f3f1",
+            "secondary-fixed-dim": "#bec6df",
+            "surface-container-highest": "#e3e2e0",
+            "on-primary-fixed": "#001258",
+            "on-error-container": "#93000a",
+            "secondary": "#565e74",
+            "error": "#ba1a1a",
+            "inverse-surface": "#2f312f",
+            "on-primary-fixed-variant": "#0c34bd",
+            "primary-container": "#4c68ec",
+            "secondary-container": "#dae2fc",
+            "surface-container-lowest": "#ffffff",
+            "surface-bright": "#faf9f6",
+            "surface": "#faf9f6",
+            "secondary-fixed": "#dae2fc",
+            "surface-dim": "#dbdad7",
+            "on-primary-container": "#fffbff",
+            "tertiary-fixed-dim": "#c8c6c2",
+            "primary-fixed": "#dee1ff",
+            "outline-variant": "#c5c5d7",
+            "on-secondary-fixed-variant": "#3e465b",
+            "tertiary-fixed": "#e4e2dd",
+            "tertiary": "#5c5c58",
+            "outline": "#757686",
+            "on-secondary-fixed": "#131b2e",
+            "surface-container-high": "#e9e8e5",
+            "inverse-primary": "#b9c3ff",
+            "on-secondary": "#ffffff",
+            "on-surface-variant": "#444654",
+            "on-background": "#1a1c1a",
+            "primary": "#2f4ed2",
+            "on-primary": "#ffffff",
+            "on-tertiary-fixed": "#1b1c19",
+            "on-tertiary-container": "#fefcf7",
+            "inverse-on-surface": "#f2f1ee",
+            "on-secondary-container": "#5c647a",
+            "on-tertiary-fixed-variant": "#474744",
+            "surface-tint": "#3250d5",
+            "on-tertiary": "#ffffff",
+            "surface-container": "#efeeeb",
+            "on-error": "#ffffff"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-md": "1rem",
+            "space-lg": "1.5rem",
+            "gutter-mobile": "1rem",
+            "margin-mobile": "1rem",
+            "margin": "2rem",
+            "gutter": "1.5rem",
+            "space-sm": "0.5rem",
+            "space-xl": "2.5rem",
+            "space-xs": "0.25rem"
+          },
+          "fontFamily": {
+            "body-md": ["Geist", "sans-serif"],
+            "headline-lg": ["Geist", "sans-serif"],
+            "body-lg": ["Geist", "sans-serif"],
+            "code-inline": ["JetBrains Mono", "monospace"],
+            "headline-md": ["Geist", "sans-serif"],
+            "label-md": ["Geist", "sans-serif"],
+            "body-sm": ["Geist", "sans-serif"],
+            "label-sm": ["Geist", "sans-serif"],
+            "headline-xl-mobile": ["Geist", "sans-serif"],
+            "headline-xl": ["Geist", "sans-serif"],
+            "headline-sm": ["Geist", "sans-serif"]
+          },
+          "fontSize": {
+            "body-md": ["15px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "400" }],
+            "headline-lg": ["28px", { "lineHeight": "36px", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+            "body-lg": ["17px", { "lineHeight": "28px", "letterSpacing": "-0.005em", "fontWeight": "400" }],
+            "code-inline": ["13px", { "lineHeight": "18px", "letterSpacing": "0em", "fontWeight": "400" }],
+            "headline-md": ["22px", { "lineHeight": "30px", "letterSpacing": "-0.015em", "fontWeight": "500" }],
+            "label-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0em", "fontWeight": "500" }],
+            "body-sm": ["13px", { "lineHeight": "20px", "letterSpacing": "0.005em", "fontWeight": "400" }],
+            "label-sm": ["12px", { "lineHeight": "16px", "letterSpacing": "0.01em", "fontWeight": "500" }],
+            "headline-xl-mobile": ["28px", { "lineHeight": "36px", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+            "headline-xl": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.025em", "fontWeight": "600" }],
+            "headline-sm": ["18px", { "lineHeight": "26px", "letterSpacing": "-0.01em", "fontWeight": "500" }]
+          },
+          "boxShadow": {
+            "ambient": "0 4px 20px -2px rgba(32, 33, 36, 0.04), 0 12px 32px -4px rgba(32, 33, 36, 0.06)",
+            "subtle": "0 2px 8px -2px rgba(32, 33, 36, 0.03)"
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 350, 'GRAD' 0, 'opsz' 20;
+      font-size: 19px;
+      line-height: 1;
+      display: inline-block;
+      vertical-align: middle;
+    }
+    .custom-scroll::-webkit-scrollbar {
+      width: 4px;
+    }
+    .custom-scroll::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    .custom-scroll::-webkit-scrollbar-thumb {
+      background: #e3e2e0;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body class="bg-surface text-on-surface antialiased font-body-md selection:bg-secondary-container selection:text-on-secondary-container h-screen w-screen overflow-hidden flex">
+<!-- LEFT SIDEBAR (SideNavBar component faithfully translated from JSON) -->
+<aside class="w-64 h-screen flex-shrink-0 bg-surface-container-low border-r border-surface-variant flex flex-col justify-between p-space-md z-40 transition-colors duration-150 ease-in-out">
+<!-- Top Area: Logo & Primary CTA & Navigation -->
+<div class="flex flex-col gap-y-4">
+<!-- Header Brand -->
+<div class="flex items-center gap-space-sm px-1 py-1">
+<img alt="Minimalist geometric crystal prism logo" class="w-6 h-6 object-contain flex-shrink-0" src="https://lh3.googleusercontent.com/aida/AEtjO1UKTfAQ9wFFyfOK9SnxiqI-rz1COilnWfgzSsmai0han6z61gUNGp53SnCq59Z1DlUoQB9Q-waNsUPuFvz5be0qWa_0Dvku33DENKw6ooXuceaH-EfAIAv2V2MI2ytwIK9jpB-NT8d2w9Po8v4x2FuRwxWZHtrEJsHvH9xXUrIGmnQ6OraxYRdZcbhEjbR0TzqmfXv5lbVE85tSCd1rkOM-6F5Gn7ryxcMy6gN7XxBfRDQfEo9pX1P3TfE"/>
+<div class="flex flex-col">
+<span class="text-headline-sm font-headline-sm font-semibold tracking-tight text-on-surface leading-none">Crystal</span>
+<span class="text-label-sm font-label-sm text-tertiary mt-0.5">Local &amp; Private</span>
+</div>
+</div>
+<!-- Action Button (New Chat) -->
+<button class="w-full flex items-center justify-between px-space-md py-2.5 rounded-lg bg-surface-container-lowest border border-surface-variant text-on-surface text-label-md font-label-md hover:bg-surface-container transition-colors duration-150 ease-in-out shadow-subtle group">
+<span class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary group-hover:rotate-90 transition-transform duration-200" data-icon="add">add</span>
+          New chat
+        </span>
+<span class="text-label-sm font-label-sm text-tertiary px-1.5 py-0.5 rounded bg-surface-container-low border border-surface-variant font-code-inline">⌘N</span>
+</button>
+<!-- Primary Standard Tabs -->
+<nav class="flex flex-col gap-0.5 pt-1">
+<!-- Chats (Active Nav Item) -->
+<a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg bg-surface-container text-on-surface font-medium text-label-md font-label-md transition-colors duration-150 ease-in-out" href="#">
+<span class="material-symbols-outlined text-primary" data-icon="chat" style="font-variation-settings: 'FILL' 1;">chat</span>
+<span>Chats</span>
+</a>
+<!-- Memory -->
+<a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container hover:text-on-surface text-label-md font-label-md transition-colors duration-150 ease-in-out" href="#">
+<span class="material-symbols-outlined" data-icon="neurology">neurology</span>
+<span>Memory</span>
+</a>
+<!-- Knowledge -->
+<a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container hover:text-on-surface text-label-md font-label-md transition-colors duration-150 ease-in-out" href="#">
+<span class="material-symbols-outlined" data-icon="description">description</span>
+<span>Knowledge</span>
+</a>
+</nav>
+<!-- Recent Conversations History -->
+<div class="pt-3">
+<div class="px-space-md pb-2 flex items-center justify-between text-label-sm font-label-sm text-tertiary">
+<span>Recent</span>
+</div>
+<div class="flex flex-col gap-0.5 custom-scroll overflow-y-auto max-h-[calc(100vh-420px)] pr-1">
+<!-- Active Current Chat -->
+<a class="group flex items-center justify-between px-3 py-2 rounded-lg bg-surface-container text-on-surface text-body-sm font-body-sm transition-colors duration-150 truncate" href="#">
+<span class="truncate">Edge AI architecture</span>
+<span class="w-1.5 h-1.5 rounded-full bg-primary flex-shrink-0"></span>
+</a>
+<!-- Other Recent items -->
+<a class="group flex items-center justify-between px-3 py-2 rounded-lg text-on-surface-variant hover:bg-surface-container hover:text-on-surface text-body-sm font-body-sm transition-colors duration-150 truncate" href="#">
+<span class="truncate">Local vector embeddings</span>
+</a>
+<a class="group flex items-center justify-between px-3 py-2 rounded-lg text-on-surface-variant hover:bg-surface-container hover:text-on-surface text-body-sm font-body-sm transition-colors duration-150 truncate" href="#">
+<span class="truncate">Distributed systems overview</span>
+</a>
+<a class="group flex items-center justify-between px-3 py-2 rounded-lg text-on-surface-variant hover:bg-surface-container hover:text-on-surface text-body-sm font-body-sm transition-colors duration-150 truncate" href="#">
+<span class="truncate">Decentralized knowledge sync</span>
+</a>
+</div>
+</div>
+</div>
+<!-- Bottom Footer Elements (From JSON & prompt requirements) -->
+<div class="flex flex-col gap-1 border-t border-surface-variant pt-3">
+<!-- Settings Tab -->
+<a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container hover:text-on-surface text-label-md font-label-md transition-colors duration-150 ease-in-out" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span>Settings</span>
+</a>
+<!-- Node Trust Status Indicator -->
+<div class="flex items-center justify-between px-space-md py-2 rounded-lg bg-surface text-body-sm font-body-sm border border-surface-variant text-tertiary">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-emerald-600 inline-block"></span>
+<span class="text-label-sm font-label-sm text-on-surface">Local · 2 trusted nodes</span>
+</div>
+<span class="material-symbols-outlined text-outline text-[16px]" data-icon="dns">dns</span>
+</div>
+</div>
+</aside>
+<!-- MAIN CANVAS & CHAT WORKSPACE -->
+<main class="flex-1 flex flex-col h-screen bg-surface overflow-hidden relative">
+<!-- TOP APP BAR (Faithfully translated from TopAppBar JSON) -->
+<header class="flex justify-between items-center w-full px-space-lg h-14 bg-surface border-b border-surface-variant transition-colors duration-150 ease-in-out z-30 select-none">
+<!-- Left: Context / State Indicator -->
+<div class="flex items-center gap-3">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-emerald-600"></span>
+<span class="text-label-sm font-label-sm text-tertiary font-medium">Connected</span>
+</div>
+</div>
+<!-- Center: Headline & Subtitle Anchor -->
+<div class="flex items-center gap-1.5 text-center">
+<span class="text-headline-sm font-headline-sm font-semibold text-on-surface">Crystal</span>
+<span class="text-tertiary">·</span>
+<span class="text-label-md font-label-md text-tertiary">Your private AI</span>
+</div>
+<!-- Right: Trailing Actions (Lock, Dns from JSON) -->
+<div class="flex items-center gap-1 text-on-surface-variant">
+<button class="p-2 rounded-lg hover:bg-surface-container-low hover:text-on-surface transition-colors duration-150 ease-in-out" title="Air-gapped &amp; Encrypted">
+<span class="material-symbols-outlined text-[19px]" data-icon="lock">lock</span>
+</button>
+<button class="p-2 rounded-lg hover:bg-surface-container-low hover:text-on-surface transition-colors duration-150 ease-in-out" title="Local Network Nodes">
+<span class="material-symbols-outlined text-[19px]" data-icon="dns">dns</span>
+</button>
+</div>
+</header>
+<!-- CHAT CONVERSATION STREAM (Editorial Reading Column: max-w-3xl) -->
+<section class="flex-1 overflow-y-auto px-4 md:px-8 pt-8 pb-48 custom-scroll">
+<div class="max-w-3xl mx-auto flex flex-col gap-y- space-xl">
+<!-- TURN 1: USER MESSAGE -->
+<article class="flex flex-col items-end">
+<div class="max-w-2xl px-5 py-3.5 rounded-xl bg-surface-container-low border border-surface-variant text-on-surface text-body-lg font-body-lg leading-relaxed shadow-subtle">
+            Explain how edge AI could reduce dependence on cloud systems.
+          </div>
+<div class="mt-1.5 mr-1 text-label-sm font-label-sm text-tertiary flex items-center gap-1">
+<span>Just now</span>
+</div>
+</article>
+<!-- TURN 2: CRYSTAL RESPONSE -->
+<article class="flex items-start gap-4">
+<!-- Crystal Brand Avatar -->
+<div class="w-8 h-8 rounded-lg bg-surface-container-lowest border border-surface-variant flex items-center justify-center p-1 flex-shrink-0 mt-0.5 shadow-subtle">
+<img alt="Minimalist geometric crystal prism logo" class="w-5 h-5 object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1UKTfAQ9wFFyfOK9SnxiqI-rz1COilnWfgzSsmai0han6z61gUNGp53SnCq59Z1DlUoQB9Q-waNsUPuFvz5be0qWa_0Dvku33DENKw6ooXuceaH-EfAIAv2V2MI2ytwIK9jpB-NT8d2w9Po8v4x2FuRwxWZHtrEJsHvH9xXUrIGmnQ6OraxYRdZcbhEjbR0TzqmfXv5lbVE85tSCd1rkOM-6F5Gn7ryxcMy6gN7XxBfRDQfEo9pX1P3TfE"/>
+</div>
+<!-- Editorial Message Content Body -->
+<div class="flex-1 space-y-4 pt-0.5">
+<!-- Leading statement -->
+<p class="text-body-lg font-body-lg text-on-surface leading-relaxed">
+              Edge AI moves more intelligence closer to where data is created. Instead of sending every request to a remote cloud service, Crystal can process information locally when appropriate.
+            </p>
+<p class="text-body-md font-body-md text-on-surface leading-relaxed">
+              This provides three important benefits:
+            </p>
+<!-- Benefit List with subtle semantic cards -->
+<div class="space-y-2.5 my-3 pl-1">
+<div class="flex items-start gap-2.5">
+<span class="text-primary mt-1 text-sm font-bold">●</span>
+<div class="text-body-md font-body-md text-on-surface">
+<strong class="font-semibold text-on-surface">Privacy</strong> — Sensitive data never leaves your physical device or local network.
+                </div>
+</div>
+<div class="flex items-start gap-2.5">
+<span class="text-primary mt-1 text-sm font-bold">●</span>
+<div class="text-body-md font-body-md text-on-surface">
+<strong class="font-semibold text-on-surface">Lower latency</strong> — Real-time inference without network roundtrips or API queue delays.
+                </div>
+</div>
+<div class="flex items-start gap-2.5">
+<span class="text-primary mt-1 text-sm font-bold">●</span>
+<div class="text-body-md font-body-md text-on-surface">
+<strong class="font-semibold text-on-surface">Continued functionality</strong> — Full autonomous operation during internet outages or air-gapped environments.
+                </div>
+</div>
+</div>
+<!-- UNDERSTATED MEMORY INTEGRATION SECTION -->
+<div class="pt-3 pb-1">
+<div class="rounded-xl border border-surface-variant bg-surface-container-lowest p-4 shadow-subtle transition-all duration-200">
+<div class="flex items-center justify-between mb-2.5">
+<div class="flex items-center gap-1.5 text-label-sm font-label-sm text-tertiary">
+<span class="material-symbols-outlined text-[16px] text-primary" data-icon="neurology" style="font-variation-settings: 'FILL' 1;">neurology</span>
+<span class="font-medium text-on-surface-variant">Used from memory</span>
+</div>
+<span class="text-label-sm font-label-sm text-tertiary">Indexed local store</span>
+</div>
+<!-- Chips Row -->
+<div class="flex flex-wrap items-center gap-2 mb-3">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-md bg-surface-container-low border border-surface-variant text-label-sm font-label-sm text-on-surface">
+<span class="text-primary text-[11px]">✦</span>
+                    Edge AI
+                  </span>
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-md bg-surface-container-low border border-surface-variant text-label-sm font-label-sm text-on-surface">
+<span class="text-primary text-[11px]">✦</span>
+                    Local-first architecture
+                  </span>
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-md bg-surface-container-low border border-surface-variant text-label-sm font-label-sm text-on-surface">
+<span class="text-primary text-[11px]">✦</span>
+                    Previous conversation (Yesterday)
+                  </span>
+</div>
+<!-- Expanded Context Note Popover/Card -->
+<div class="p-3 rounded-lg bg-surface-container-low/70 border border-surface-variant/80 text-body-sm font-body-sm text-on-surface-variant flex items-start gap-2.5">
+<span class="material-symbols-outlined text-outline text-[16px] mt-0.5" data-icon="description">description</span>
+<div>
+<span class="font-medium text-on-surface">Memory used:</span>
+<span>Edge AI project · Local-first architecture · 4 relevant context notes referenced.</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Assistant Turn Actions Bar -->
+<div class="flex items-center gap-1 text-tertiary pt-1">
+<button class="w-8 h-8 rounded-lg flex items-center justify-center hover:bg-surface-container hover:text-on-surface transition-colors" title="Copy to clipboard">
+<span class="material-symbols-outlined text-[17px]" data-icon="content_copy">content_copy</span>
+</button>
+<button class="w-8 h-8 rounded-lg flex items-center justify-center hover:bg-surface-container hover:text-on-surface transition-colors" title="Regenerate local response">
+<span class="material-symbols-outlined text-[17px]" data-icon="refresh">refresh</span>
+</button>
+<button class="w-8 h-8 rounded-lg flex items-center justify-center hover:bg-surface-container hover:text-on-surface transition-colors" title="Add note to Knowledge">
+<span class="material-symbols-outlined text-[17px]" data-icon="bookmark">bookmark</span>
+</button>
+</div>
+</div>
+</article>
+</div>
+</section>
+<!-- FLOATING BOTTOM PROMPT COMPOSER & FOOTER -->
+<div class="absolute bottom-0 left-0 right-0 p-4 md:pb-6 pt-0 bg-gradient-to-t from-surface via-surface/95 to-transparent flex flex-col items-center pointer-events-none z-20">
+<div class="w-full max-w-3xl pointer-events-auto flex flex-col items-center gap-3">
+<!-- Suggested Follow-ups (Suggestion Chips) -->
+<div class="flex items-center gap-2 select-none overflow-x-auto max-w-full pb-0.5">
+<button class="px-3 py-1.5 rounded-lg bg-surface-container-lowest border border-surface-variant text-label-sm font-label-sm text-on-surface hover:border-primary transition-all duration-150 shadow-subtle flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[15px] text-tertiary" data-icon="search">search</span>
+            Search my memory
+          </button>
+<button class="px-3 py-1.5 rounded-lg bg-surface-container-lowest border border-surface-variant text-label-sm font-label-sm text-on-surface hover:border-primary transition-all duration-150 shadow-subtle flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[15px] text-tertiary" data-icon="auto_stories">auto_stories</span>
+            Explain simply
+          </button>
+<button class="px-3 py-1.5 rounded-lg bg-surface-container-lowest border border-surface-variant text-label-sm font-label-sm text-on-surface hover:border-primary transition-all duration-150 shadow-subtle flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[15px] text-tertiary" data-icon="hub">hub</span>
+            Connect ideas
+          </button>
+</div>
+<!-- The Elevated Prompt Input Dock -->
+<div class="w-full bg-surface-container-lowest rounded-xl border border-surface-variant shadow-ambient p-2.5 flex flex-col transition-all focus-within:border-primary/80 focus-within:ring-2 focus-within:ring-primary/10">
+<!-- Textarea area -->
+<textarea class="w-full resize-none border-0 bg-transparent px-2 pt-1 pb-2 text-body-md font-body-md text-on-surface placeholder:text-outline focus:ring-0 focus:outline-none" placeholder="Ask Crystal anything..." rows="2"></textarea>
+<!-- Input Action Bar -->
+<div class="flex items-center justify-between pt-1 border-t border-surface-variant/40 mt-1">
+<!-- Left contextual attachments -->
+<div class="flex items-center gap-1">
+<button class="w-8 h-8 rounded-lg flex items-center justify-center text-outline hover:text-on-surface hover:bg-surface-container-low transition-colors" title="Attach document or code">
+<span class="material-symbols-outlined text-[18px]" data-icon="attach_file">attach_file</span>
+</button>
+<button class="w-8 h-8 rounded-lg flex items-center justify-center text-outline hover:text-primary hover:bg-surface-container-low transition-colors" title="Toggle memory references">
+<span class="material-symbols-outlined text-[18px]" data-icon="neurology">neurology</span>
+</button>
+<button class="w-8 h-8 rounded-lg flex items-center justify-center text-outline hover:text-on-surface hover:bg-surface-container-low transition-colors" title="Audio dictation">
+<span class="material-symbols-outlined text-[18px]" data-icon="mic">mic</span>
+</button>
+</div>
+<!-- Right: Node Mode badge & Circular Send Button -->
+<div class="flex items-center gap-2">
+<span class="text-label-sm font-label-sm text-tertiary hidden sm:inline-block px-2 py-0.5 rounded bg-surface-container-low border border-surface-variant">
+                Local model active
+              </span>
+<button class="w-8 h-8 rounded-full bg-primary hover:bg-primary-container text-on-primary flex items-center justify-center transition-transform active:scale-95 shadow-sm" title="Send query">
+<span class="material-symbols-outlined text-[18px]" data-icon="arrow_upward">arrow_upward</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Quiet Trust Guarantee Footer -->
+<p class="text-label-sm font-label-sm text-tertiary text-center tracking-normal">
+          Crystal runs locally · Private by default · Memories stay on your device
+        </p>
+</div>
+</div>
+</main>
+</body></html>

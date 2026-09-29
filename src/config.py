@@ -1,20 +1,24 @@
 import os
 import json
-from dataclasses import dataclass, asdict
-from typing import Optional, Dict, Any
+from dataclasses import dataclass, field, asdict
+from typing import Optional, Dict, Any, List
 
 
 @dataclass
 class NodeConfig:
     """
     Crystal Node Configuration.
-    Defines identity, network binding, and local storage location for a node.
+    Defines identity, network binding, local storage location, and peer list for a node.
     """
     node_id: str = "node-a"
     node_name: str = "Crystal Node A"
     host: str = "127.0.0.1"
     port: int = 8001
     data_directory: str = "./data/node_a"
+    peers: List[Dict[str, Any]] = field(default_factory=list)
+    llm_server_url: Optional[str] = "http://127.0.0.1:8080"
+    llm_binary_path: Optional[str] = None
+    llm_model_path: Optional[str] = None
 
     def to_dict(self) -> Dict[str, Any]:
         return asdict(self)
@@ -27,6 +31,10 @@ class NodeConfig:
             host=str(data.get("host", "127.0.0.1")),
             port=int(data.get("port", 8001)),
             data_directory=str(data.get("data_directory", "./data/node_a")),
+            peers=list(data.get("peers", [])),
+            llm_server_url=data.get("llm_server_url", "http://127.0.0.1:8080"),
+            llm_binary_path=data.get("llm_binary_path"),
+            llm_model_path=data.get("llm_model_path"),
         )
 
     @classmethod
@@ -62,5 +70,11 @@ class NodeConfig:
             config.port = int(os.getenv("CRYSTAL_PORT"))
         if os.getenv("CRYSTAL_DATA_DIR"):
             config.data_directory = os.getenv("CRYSTAL_DATA_DIR")
+        if os.getenv("CRYSTAL_LLM_URL"):
+            config.llm_server_url = os.getenv("CRYSTAL_LLM_URL")
+        if os.getenv("CRYSTAL_LLAMA_BIN"):
+            config.llm_binary_path = os.getenv("CRYSTAL_LLAMA_BIN")
+        if os.getenv("CRYSTAL_MODEL_PATH"):
+            config.llm_model_path = os.getenv("CRYSTAL_MODEL_PATH")
 
         return config

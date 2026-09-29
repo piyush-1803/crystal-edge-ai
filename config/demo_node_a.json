@@ -1,7 +1,7 @@
 {
   "node_id": "node-a",
   "node_name": "Crystal Node A",
-  "host": "0.0.0.0",
+  "host": "127.0.0.1",
   "port": 8001,
   "data_directory": "./data/node_a"
 }
