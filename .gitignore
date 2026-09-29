@@ -12,6 +12,9 @@ __pycache__/
 # Node Data & Databases
 data/*
 !data/.gitkeep
+!data/node_a/
+data/node_a/*
+!data/node_a/shareable_articles/
 *.db
 *.sqlite
 
