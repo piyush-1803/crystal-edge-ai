@@ -211,24 +211,10 @@
           <span>Recent</span>
         </div>
         <div id="recent-list" class="flex flex-col gap-0.5 custom-scroll overflow-y-auto max-h-[calc(100vh-420px)] pr-1">
-          <!-- Active Current Chat -->
-          <a href="javascript:void(0)" onclick="loadRecentChat(0)" class="recent-item group flex items-center justify-between px-3 py-2 rounded-lg bg-surface-container text-on-surface text-body-sm font-body-sm transition-colors duration-150 truncate">
-            <span class="truncate">Edge AI architecture</span>
-            <span class="recent-dot w-1.5 h-1.5 rounded-full bg-primary flex-shrink-0"></span>
-          </a>
-          <!-- Other Recent items -->
-          <a href="javascript:void(0)" onclick="loadRecentChat(1)" class="recent-item group flex items-center justify-between px-3 py-2 rounded-lg text-on-surface-variant hover:bg-surface-container hover:text-on-surface text-body-sm font-body-sm transition-colors duration-150 truncate">
-            <span class="truncate">Local vector embeddings</span>
-            <span class="recent-dot w-1.5 h-1.5 rounded-full bg-primary flex-shrink-0 hidden"></span>
-          </a>
-          <a href="javascript:void(0)" onclick="loadRecentChat(2)" class="recent-item group flex items-center justify-between px-3 py-2 rounded-lg text-on-surface-variant hover:bg-surface-container hover:text-on-surface text-body-sm font-body-sm transition-colors duration-150 truncate">
-            <span class="truncate">Distributed systems overview</span>
-            <span class="recent-dot w-1.5 h-1.5 rounded-full bg-primary flex-shrink-0 hidden"></span>
-          </a>
-          <a href="javascript:void(0)" onclick="loadRecentChat(3)" class="recent-item group flex items-center justify-between px-3 py-2 rounded-lg text-on-surface-variant hover:bg-surface-container hover:text-on-surface text-body-sm font-body-sm transition-colors duration-150 truncate">
-            <span class="truncate">Decentralized knowledge sync</span>
-            <span class="recent-dot w-1.5 h-1.5 rounded-full bg-primary flex-shrink-0 hidden"></span>
-          </a>
+          <div id="recent-empty-notice" class="px-3 py-6 text-center text-label-sm font-label-sm text-tertiary">
+            <span>No recent conversations</span>
+            <div class="text-[11px] text-tertiary/75 mt-0.5">Your private chats will appear here.</div>
+          </div>
         </div>
       </div>
     </div>
@@ -295,107 +281,65 @@
       <section id="chat-stream" class="flex-1 overflow-y-auto px-4 md:px-8 pt-8 pb-48 custom-scroll w-full min-w-0">
         <div id="conversation-container" class="max-w-3xl mx-auto flex flex-col gap-y-space-xl w-full">
           
-          <!-- TURN 1: USER MESSAGE -->
-          <article class="chat-turn flex flex-col items-end w-full">
-            <div class="max-w-2xl px-5 py-3.5 rounded-xl bg-surface-container-low border border-surface-variant text-on-surface text-body-lg font-body-lg leading-relaxed shadow-subtle">
-              Explain how edge AI could reduce dependence on cloud systems.
-            </div>
-            <div class="mt-1.5 mr-1 text-label-sm font-label-sm text-tertiary flex items-center gap-1">
-              <span>Just now</span>
-            </div>
-          </article>
-
-          <!-- TURN 2: CRYSTAL RESPONSE -->
-          <article class="chat-turn flex items-start gap-4 w-full">
-            <!-- Crystal Brand Avatar -->
-            <div class="w-8 h-8 rounded-lg bg-surface-container-lowest border border-surface-variant flex items-center justify-center p-1 flex-shrink-0 mt-0.5 shadow-subtle">
-              <img alt="Minimalist geometric crystal prism logo" class="w-5 h-5 object-contain" src="/assets/crystal-logo.png" onerror="this.src='https://lh3.googleusercontent.com/aida/AEtjO1UKTfAQ9wFFyfOK9SnxiqI-rz1COilnWfgzSsmai0han6z61gUNGp53SnCq59Z1DlUoQB9Q-waNsUPuFvz5be0qWa_0Dvku33DENKw6ooXuceaH-EfAIAv2V2MI2ytwIK9jpB-NT8d2w9Po8v4x2FuRwxWZHtrEJsHvH9xXUrIGmnQ6OraxYRdZcbhEjbR0TzqmfXv5lbVE85tSCd1rkOM-6F5Gn7ryxcMy6gN7XxBfRDQfEo9pX1P3TfE'"/>
+          <!-- EMPTY STATE HERO (FIRST-LAUNCH CLEAN CANVAS) -->
+          <div id="chat-empty-hero" class="flex flex-col items-center justify-center text-center py-10 md:py-14 px-4 space-y-6 max-w-2xl mx-auto w-full">
+            <!-- Brand Icon -->
+            <div class="w-14 h-14 rounded-2xl bg-surface-container-lowest border border-surface-variant flex items-center justify-center p-2.5 shadow-subtle">
+              <img alt="Crystal" class="w-9 h-9 object-contain" src="/assets/crystal-logo.png" onerror="this.src='https://lh3.googleusercontent.com/aida/AEtjO1UKTfAQ9wFFyfOK9SnxiqI-rz1COilnWfgzSsmai0han6z61gUNGp53SnCq59Z1DlUoQB9Q-waNsUPuFvz5be0qWa_0Dvku33DENKw6ooXuceaH-EfAIAv2V2MI2ytwIK9jpB-NT8d2w9Po8v4x2FuRwxWZHtrEJsHvH9xXUrIGmnQ6OraxYRdZcbhEjbR0TzqmfXv5lbVE85tSCd1rkOM-6F5Gn7ryxcMy6gN7XxBfRDQfEo9pX1P3TfE'"/>
             </div>
 
-            <!-- Editorial Message Content Body -->
-            <div class="flex-1 space-y-4 pt-0.5 min-w-0">
-              <!-- Leading statement -->
-              <p class="text-body-lg font-body-lg text-on-surface leading-relaxed">
-                Edge AI moves more intelligence closer to where data is created. Instead of sending every request to a remote cloud service, Crystal can process information locally when appropriate.
+            <!-- Headings -->
+            <div class="space-y-2">
+              <h2 class="text-headline-md font-headline-md font-semibold text-on-surface">Crystal</h2>
+              <p class="text-label-md font-label-md text-tertiary">Local-first AI. Private memory. Connected knowledge.</p>
+              <p class="text-body-md font-body-md text-on-surface-variant max-w-lg mx-auto leading-relaxed pt-1">
+                Autonomous edge intelligence operating entirely on your device. Your conversations, memories, and files remain strictly private.
               </p>
-              <p class="text-body-md font-body-md text-on-surface leading-relaxed">
-                This provides three important benefits:
-              </p>
-
-              <!-- Benefit List with subtle semantic cards -->
-              <div class="space-y-2.5 my-3 pl-1">
-                <div class="flex items-start gap-2.5">
-                  <span class="text-primary mt-1 text-sm font-bold">●</span>
-                  <div class="text-body-md font-body-md text-on-surface">
-                    <strong class="font-semibold text-on-surface">Privacy</strong> — Sensitive data never leaves your physical device or local network.
-                  </div>
-                </div>
-                <div class="flex items-start gap-2.5">
-                  <span class="text-primary mt-1 text-sm font-bold">●</span>
-                  <div class="text-body-md font-body-md text-on-surface">
-                    <strong class="font-semibold text-on-surface">Lower latency</strong> — Real-time inference without network roundtrips or API queue delays.
-                  </div>
-                </div>
-                <div class="flex items-start gap-2.5">
-                  <span class="text-primary mt-1 text-sm font-bold">●</span>
-                  <div class="text-body-md font-body-md text-on-surface">
-                    <strong class="font-semibold text-on-surface">Continued functionality</strong> — Full autonomous operation during internet outages or air-gapped environments.
-                  </div>
-                </div>
-              </div>
-
-              <!-- UNDERSTATED MEMORY INTEGRATION SECTION -->
-              <div class="pt-3 pb-1">
-                <div class="rounded-xl border border-surface-variant bg-surface-container-lowest p-4 shadow-subtle transition-all duration-200">
-                  <div class="flex items-center justify-between mb-2.5">
-                    <div class="flex items-center gap-1.5 text-label-sm font-label-sm text-tertiary">
-                      <span class="material-symbols-outlined text-[16px] text-primary" data-icon="neurology">neurology</span>
-                      <span class="font-medium text-on-surface-variant">Used from memory</span>
-                    </div>
-                    <span class="text-label-sm font-label-sm text-tertiary">Indexed local store</span>
-                  </div>
-
-                  <!-- Chips Row -->
-                  <div class="flex flex-wrap items-center gap-2 mb-3">
-                    <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-md bg-surface-container-low border border-surface-variant text-label-sm font-label-sm text-on-surface">
-                      <span class="text-primary text-[11px]">✦</span>
-                      Edge AI
-                    </span>
-                    <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-md bg-surface-container-low border border-surface-variant text-label-sm font-label-sm text-on-surface">
-                      <span class="text-primary text-[11px]">✦</span>
-                      Local-first architecture
-                    </span>
-                    <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-md bg-surface-container-low border border-surface-variant text-label-sm font-label-sm text-on-surface">
-                      <span class="text-primary text-[11px]">✦</span>
-                      Previous conversation (Yesterday)
-                    </span>
-                  </div>
-
-                  <!-- Expanded Context Note Popover/Card -->
-                  <div class="p-3 rounded-lg bg-surface-container-low/70 border border-surface-variant/80 text-body-sm font-body-sm text-on-surface-variant flex items-start gap-2.5">
-                    <span class="material-symbols-outlined text-outline text-[16px] mt-0.5" data-icon="description">description</span>
-                    <div>
-                      <span class="font-medium text-on-surface">Memory used:</span>
-                      <span>Edge AI project · Local-first architecture · 4 relevant context notes referenced.</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Assistant Turn Actions Bar -->
-              <div class="flex items-center gap-1 text-tertiary pt-1">
-                <button onclick="copyTurnText(this)" class="w-8 h-8 rounded-lg flex items-center justify-center hover:bg-surface-container hover:text-on-surface transition-colors cursor-pointer" title="Copy to clipboard">
-                  <span class="material-symbols-outlined text-[17px]" data-icon="content_copy">content_copy</span>
-                </button>
-                <button onclick="regenerateTurn(this)" class="w-8 h-8 rounded-lg flex items-center justify-center hover:bg-surface-container hover:text-on-surface transition-colors cursor-pointer" title="Regenerate local response">
-                  <span class="material-symbols-outlined text-[17px]" data-icon="refresh">refresh</span>
-                </button>
-                <button onclick="bookmarkTurn(this)" class="w-8 h-8 rounded-lg flex items-center justify-center hover:bg-surface-container hover:text-on-surface transition-colors cursor-pointer" title="Add note to Knowledge">
-                  <span class="material-symbols-outlined text-[17px]" data-icon="bookmark">bookmark</span>
-                </button>
-              </div>
             </div>
-          </article>
+
+            <!-- Starter Prompt Cards -->
+            <div class="w-full grid grid-cols-1 sm:grid-cols-2 gap-2.5 pt-2 text-left">
+              <button onclick="useSuggestion('Explain how edge AI could reduce dependence on cloud systems.')" class="p-3.5 rounded-xl bg-surface-container-lowest border border-surface-variant hover:border-primary/50 text-left transition-all duration-150 shadow-subtle group cursor-pointer">
+                <div class="flex items-center gap-1.5 text-primary text-label-sm font-medium mb-1">
+                  <span class="material-symbols-outlined text-[16px]">psychology</span>
+                  <span>Architecture</span>
+                </div>
+                <div class="text-body-sm font-body-sm text-on-surface group-hover:text-primary transition-colors line-clamp-2">
+                  Explain how edge AI could reduce dependence on cloud systems.
+                </div>
+              </button>
+
+              <button onclick="useSuggestion('How does Crystal preserve privacy on local devices?')" class="p-3.5 rounded-xl bg-surface-container-lowest border border-surface-variant hover:border-primary/50 text-left transition-all duration-150 shadow-subtle group cursor-pointer">
+                <div class="flex items-center gap-1.5 text-primary text-label-sm font-medium mb-1">
+                  <span class="material-symbols-outlined text-[16px]">shield</span>
+                  <span>Privacy Guarantee</span>
+                </div>
+                <div class="text-body-sm font-body-sm text-on-surface group-hover:text-primary transition-colors line-clamp-2">
+                  How does Crystal preserve privacy on local devices?
+                </div>
+              </button>
+
+              <button onclick="useSuggestion('Search my local memory for recent notes')" class="p-3.5 rounded-xl bg-surface-container-lowest border border-surface-variant hover:border-primary/50 text-left transition-all duration-150 shadow-subtle group cursor-pointer">
+                <div class="flex items-center gap-1.5 text-primary text-label-sm font-medium mb-1">
+                  <span class="material-symbols-outlined text-[16px]">neurology</span>
+                  <span>Used from memory</span>
+                </div>
+                <div class="text-body-sm font-body-sm text-on-surface group-hover:text-primary transition-colors line-clamp-2">
+                  Search my local memory for recent notes
+                </div>
+              </button>
+
+              <button onclick="useSuggestion('What are the benefits of peer-to-peer knowledge sharing?')" class="p-3.5 rounded-xl bg-surface-container-lowest border border-surface-variant hover:border-primary/50 text-left transition-all duration-150 shadow-subtle group cursor-pointer">
+                <div class="flex items-center gap-1.5 text-primary text-label-sm font-medium mb-1">
+                  <span class="material-symbols-outlined text-[16px]">hub</span>
+                  <span>Network Sync</span>
+                </div>
+                <div class="text-body-sm font-body-sm text-on-surface group-hover:text-primary transition-colors line-clamp-2">
+                  What are the benefits of peer-to-peer knowledge sharing?
+                </div>
+              </button>
+            </div>
+          </div>
 
         </div>
       </section>
@@ -481,39 +425,23 @@
           </div>
         </div>
 
-        <!-- Memory Items list -->
-        <div class="space-y-3">
-          <div class="p-4 rounded-xl bg-surface-container-lowest border border-surface-variant shadow-subtle space-y-2">
-            <div class="flex items-center justify-between">
-              <span class="text-label-sm font-medium text-primary flex items-center gap-1">
-                <span class="material-symbols-outlined text-[15px]" data-icon="neurology">neurology</span>
-                Edge AI Project Notes
-              </span>
-              <span class="text-label-sm text-tertiary">Indexed Yesterday</span>
+        <!-- Memory Items list (Zero State) -->
+        <div id="memory-items-container" class="space-y-3">
+          <div class="p-8 rounded-xl bg-surface-container-lowest border border-surface-variant shadow-subtle text-center space-y-3">
+            <div class="w-12 h-12 rounded-xl bg-surface-container-low border border-surface-variant flex items-center justify-center mx-auto text-primary">
+              <span class="material-symbols-outlined text-[24px]" data-icon="neurology">neurology</span>
             </div>
-            <p class="text-body-md text-on-surface">
-              Investigating local edge cognitive inference. Separating private personal memories from shareable network knowledge layer.
-            </p>
-            <div class="flex gap-2 pt-1">
-              <span class="text-label-sm px-2 py-0.5 rounded bg-surface-container-low text-tertiary">#architecture</span>
-              <span class="text-label-sm px-2 py-0.5 rounded bg-surface-container-low text-tertiary">#local-first</span>
+            <div class="space-y-1">
+              <h3 class="text-title-sm font-medium text-on-surface">No memories indexed yet</h3>
+              <p class="text-body-sm text-tertiary max-w-md mx-auto leading-relaxed">
+                As you use Crystal, personal notes, ideas, and contextual preferences are retained in your local SQLite store with zero network exposure.
+              </p>
             </div>
-          </div>
-
-          <div class="p-4 rounded-xl bg-surface-container-lowest border border-surface-variant shadow-subtle space-y-2">
-            <div class="flex items-center justify-between">
-              <span class="text-label-sm font-medium text-primary flex items-center gap-1">
-                <span class="material-symbols-outlined text-[15px]" data-icon="neurology">neurology</span>
-                Local Storage Configuration
-              </span>
-              <span class="text-label-sm text-tertiary">Indexed 3 days ago</span>
-            </div>
-            <p class="text-body-md text-on-surface">
-              Nodes maintain complete autonomous operation even during network disconnects or air-gapped field deployments.
-            </p>
-            <div class="flex gap-2 pt-1">
-              <span class="text-label-sm px-2 py-0.5 rounded bg-surface-container-low text-tertiary">#storage</span>
-              <span class="text-label-sm px-2 py-0.5 rounded bg-surface-container-low text-tertiary">#offline</span>
+            <div class="pt-2">
+              <button onclick="switchNav('chats')" class="px-4 py-2 rounded-lg bg-surface-container-low hover:bg-surface-container border border-surface-variant text-label-sm font-medium text-on-surface transition-colors cursor-pointer inline-flex items-center gap-1.5">
+                <span class="material-symbols-outlined text-[16px] text-primary" data-icon="chat">chat</span>
+                Start a private chat
+              </button>
             </div>
           </div>
         </div>
@@ -545,19 +473,24 @@
           </button>
         </div>
 
-        <!-- Knowledge Search Results Container -->
+        <!-- Knowledge Search Results Container (Zero State) -->
         <div id="knowledge-results" class="space-y-3">
-          <div class="p-4 rounded-xl bg-surface-container-lowest border border-surface-variant shadow-subtle space-y-2">
-            <div class="flex items-center justify-between">
-              <span class="text-label-sm font-medium text-on-surface flex items-center gap-1.5">
-                <span class="material-symbols-outlined text-[16px] text-tertiary" data-icon="description">description</span>
-                Shareable Network Record
-              </span>
-              <span class="text-label-sm text-tertiary px-2 py-0.5 rounded bg-surface-container-low font-code-inline">source: node-a</span>
+          <div class="p-8 rounded-xl bg-surface-container-lowest border border-surface-variant shadow-subtle text-center space-y-3">
+            <div class="w-12 h-12 rounded-xl bg-surface-container-low border border-surface-variant flex items-center justify-center mx-auto text-primary">
+              <span class="material-symbols-outlined text-[24px]" data-icon="hub">hub</span>
             </div>
-            <p class="text-body-md text-on-surface leading-relaxed">
-              Edge AI architecture for TatHack '26 PS8 enables distributed nodes to share verified knowledge items over local LAN while retaining private memory.
-            </p>
+            <div class="space-y-1">
+              <h3 class="text-title-sm font-medium text-on-surface">Network Knowledge Layer</h3>
+              <p class="text-body-sm text-tertiary max-w-md mx-auto leading-relaxed">
+                Search shareable knowledge synchronized across connected peer nodes. Only records explicitly flagged as shareable are published to the network.
+              </p>
+            </div>
+            <div class="pt-2">
+              <button onclick="switchNav('network')" class="px-4 py-2 rounded-lg bg-surface-container-low hover:bg-surface-container border border-surface-variant text-label-sm font-medium text-on-surface transition-colors cursor-pointer inline-flex items-center gap-1.5">
+                <span class="material-symbols-outlined text-[16px] text-primary" data-icon="radar">radar</span>
+                Discover Peer Nodes
+              </button>
+            </div>
           </div>
         </div>
       </div>
@@ -1136,6 +1069,104 @@
       closeMobileSidebar();
     }
 
+    let currentChatTurns = 0;
+
+    function getEmptyChatHeroHtml() {
+      return `
+        <div id="chat-empty-hero" class="flex flex-col items-center justify-center text-center py-10 md:py-14 px-4 space-y-6 max-w-2xl mx-auto w-full">
+          <div class="w-14 h-14 rounded-2xl bg-surface-container-lowest border border-surface-variant flex items-center justify-center p-2.5 shadow-subtle">
+            <img alt="Crystal" class="w-9 h-9 object-contain" src="/assets/crystal-logo.png" onerror="this.src='https://lh3.googleusercontent.com/aida/AEtjO1UKTfAQ9wFFyfOK9SnxiqI-rz1COilnWfgzSsmai0han6z61gUNGp53SnCq59Z1DlUoQB9Q-waNsUPuFvz5be0qWa_0Dvku33DENKw6ooXuceaH-EfAIAv2V2MI2ytwIK9jpB-NT8d2w9Po8v4x2FuRwxWZHtrEJsHvH9xXUrIGmnQ6OraxYRdZcbhEjbR0TzqmfXv5lbVE85tSCd1rkOM-6F5Gn7ryxcMy6gN7XxBfRDQfEo9pX1P3TfE'"/>
+          </div>
+          <div class="space-y-2">
+            <h2 class="text-headline-md font-headline-md font-semibold text-on-surface">Crystal</h2>
+            <p class="text-label-md font-label-md text-tertiary">Local-first AI. Private memory. Connected knowledge.</p>
+            <p class="text-body-md font-body-md text-on-surface-variant max-w-lg mx-auto leading-relaxed pt-1">
+              Autonomous edge intelligence operating entirely on your device. Your conversations, memories, and files remain strictly private.
+            </p>
+          </div>
+          <div class="w-full grid grid-cols-1 sm:grid-cols-2 gap-2.5 pt-2 text-left">
+            <button onclick="useSuggestion('Explain how edge AI could reduce dependence on cloud systems.')" class="p-3.5 rounded-xl bg-surface-container-lowest border border-surface-variant hover:border-primary/50 text-left transition-all duration-150 shadow-subtle group cursor-pointer">
+              <div class="flex items-center gap-1.5 text-primary text-label-sm font-medium mb-1">
+                <span class="material-symbols-outlined text-[16px]">psychology</span>
+                <span>Architecture</span>
+              </div>
+              <div class="text-body-sm font-body-sm text-on-surface group-hover:text-primary transition-colors line-clamp-2">
+                Explain how edge AI could reduce dependence on cloud systems.
+              </div>
+            </button>
+            <button onclick="useSuggestion('How does Crystal preserve privacy on local devices?')" class="p-3.5 rounded-xl bg-surface-container-lowest border border-surface-variant hover:border-primary/50 text-left transition-all duration-150 shadow-subtle group cursor-pointer">
+              <div class="flex items-center gap-1.5 text-primary text-label-sm font-medium mb-1">
+                <span class="material-symbols-outlined text-[16px]">shield</span>
+                <span>Privacy Guarantee</span>
+              </div>
+              <div class="text-body-sm font-body-sm text-on-surface group-hover:text-primary transition-colors line-clamp-2">
+                How does Crystal preserve privacy on local devices?
+              </div>
+            </button>
+            <button onclick="useSuggestion('Search my local memory for recent notes')" class="p-3.5 rounded-xl bg-surface-container-lowest border border-surface-variant hover:border-primary/50 text-left transition-all duration-150 shadow-subtle group cursor-pointer">
+              <div class="flex items-center gap-1.5 text-primary text-label-sm font-medium mb-1">
+                <span class="material-symbols-outlined text-[16px]">neurology</span>
+                <span>Used from memory</span>
+              </div>
+              <div class="text-body-sm font-body-sm text-on-surface group-hover:text-primary transition-colors line-clamp-2">
+                Search my local memory for recent notes
+              </div>
+            </button>
+            <button onclick="useSuggestion('What are the benefits of peer-to-peer knowledge sharing?')" class="p-3.5 rounded-xl bg-surface-container-lowest border border-surface-variant hover:border-primary/50 text-left transition-all duration-150 shadow-subtle group cursor-pointer">
+              <div class="flex items-center gap-1.5 text-primary text-label-sm font-medium mb-1">
+                <span class="material-symbols-outlined text-[16px]">hub</span>
+                <span>Network Sync</span>
+              </div>
+              <div class="text-body-sm font-body-sm text-on-surface group-hover:text-primary transition-colors line-clamp-2">
+                What are the benefits of peer-to-peer knowledge sharing?
+              </div>
+            </button>
+          </div>
+        </div>
+      `;
+    }
+
+    function addRecentChatSession(firstMsg) {
+      const emptyNotice = document.getElementById('recent-empty-notice');
+      if (emptyNotice) {
+        emptyNotice.remove();
+      }
+
+      const recentList = document.getElementById('recent-list');
+      const items = recentList.querySelectorAll('.recent-item');
+      items.forEach(it => {
+        it.classList.remove('bg-surface-container', 'text-on-surface');
+        it.classList.add('text-on-surface-variant');
+        const d = it.querySelector('.recent-dot');
+        if (d) d.classList.add('hidden');
+      });
+
+      const cleanTitle = firstMsg.length > 28 ? firstMsg.substring(0, 26) + '...' : firstMsg;
+      const item = document.createElement('a');
+      item.href = "javascript:void(0)";
+      item.className = "recent-item group flex items-center justify-between px-3 py-2 rounded-lg bg-surface-container text-on-surface text-body-sm font-body-sm transition-colors duration-150 truncate";
+      item.innerHTML = `
+        <span class="truncate">${escapeHtml(cleanTitle)}</span>
+        <span class="recent-dot w-1.5 h-1.5 rounded-full bg-primary flex-shrink-0"></span>
+      `;
+      item.onclick = () => {
+        switchNav('chats');
+        const allItems = recentList.querySelectorAll('.recent-item');
+        allItems.forEach(el => {
+          el.classList.remove('bg-surface-container', 'text-on-surface');
+          el.classList.add('text-on-surface-variant');
+          const dt = el.querySelector('.recent-dot');
+          if (dt) dt.classList.add('hidden');
+        });
+        item.classList.add('bg-surface-container', 'text-on-surface');
+        item.classList.remove('text-on-surface-variant');
+        const myDot = item.querySelector('.recent-dot');
+        if (myDot) myDot.classList.remove('hidden');
+        closeMobileSidebar();
+      };
+      recentList.prepend(item);
+    }
+
     // Recent Chat Selection
     function loadRecentChat(index) {
       switchNav('chats');
@@ -1158,16 +1189,19 @@
     // New Chat Action
     function startNewChat() {
       switchNav('chats');
+      currentChatTurns = 0;
       const container = document.getElementById('conversation-container');
-      container.innerHTML = `
-        <div class="text-center py-16 space-y-3">
-          <div class="w-12 h-12 rounded-xl bg-surface-container-lowest border border-surface-variant flex items-center justify-center p-2 mx-auto shadow-subtle">
-            <img alt="Crystal" class="w-8 h-8 object-contain" src="/assets/crystal-logo.png" onerror="this.src='https://lh3.googleusercontent.com/aida/AEtjO1UKTfAQ9wFFyfOK9SnxiqI-rz1COilnWfgzSsmai0han6z61gUNGp53SnCq59Z1DlUoQB9Q-waNsUPuFvz5be0qWa_0Dvku33DENKw6ooXuceaH-EfAIAv2V2MI2ytwIK9jpB-NT8d2w9Po8v4x2FuRwxWZHtrEJsHvH9xXUrIGmnQ6OraxYRdZcbhEjbR0TzqmfXv5lbVE85tSCd1rkOM-6F5Gn7ryxcMy6gN7XxBfRDQfEo9pX1P3TfE'"/>
-          </div>
-          <h2 class="text-headline-md font-medium text-on-surface">How can Crystal assist you today?</h2>
-          <p class="text-body-md text-tertiary max-w-md mx-auto">All interactions are processed locally and stored in private memory on your device.</p>
-        </div>
-      `;
+      container.innerHTML = getEmptyChatHeroHtml();
+      
+      const items = document.querySelectorAll('#recent-list .recent-item');
+      items.forEach(it => {
+        it.classList.remove('bg-surface-container', 'text-on-surface');
+        it.classList.add('text-on-surface-variant');
+        const d = it.querySelector('.recent-dot');
+        if (d) d.classList.add('hidden');
+      });
+
+      document.getElementById('prompt-input').value = "";
       document.getElementById('prompt-input').focus();
       closeMobileSidebar();
     }
@@ -1182,6 +1216,15 @@
       textarea.style.height = "auto";
 
       const container = document.getElementById('conversation-container');
+      const emptyHero = document.getElementById('chat-empty-hero');
+      if (emptyHero) {
+        emptyHero.remove();
+      }
+
+      currentChatTurns++;
+      if (currentChatTurns === 1) {
+        addRecentChatSession(text);
+      }
 
       // 1. Append User Message
       const userTurn = document.createElement('article');
@@ -1287,8 +1330,8 @@
             { title: "Lower latency", text: "Real-time inference without network roundtrips or API queue delays." },
             { title: "Continued functionality", text: "Full autonomous operation during internet outages or air-gapped environments." }
           ],
-          tags: ["Edge AI", "Local-first architecture", "Previous conversation (Yesterday)"],
-          memoryNote: "Edge AI project · Local-first architecture · 4 relevant context notes referenced."
+          tags: ["Edge AI", "Local-first architecture", "Private by default"],
+          memoryNote: "Edge AI architecture · Local-first processing · Zero cloud offloading."
         };
       } else if (q.includes("memory") || q.includes("private")) {
         return {
