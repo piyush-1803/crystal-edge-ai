@@ -4,5 +4,6 @@ Decouples application logic from networking implementations (LAN/HTTP, BLE, Mesh
 """
 
 from src.transport.base import BaseTransport
+from src.transport.lan import LANTransport
 
-__all__ = ["BaseTransport"]
+__all__ = ["BaseTransport", "LANTransport"]

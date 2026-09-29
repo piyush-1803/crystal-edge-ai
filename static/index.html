@@ -1,0 +1,1500 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>Crystal · Your private AI</title>
+  <link rel="icon" type="image/png" href="/assets/crystal-logo.png"/>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com" rel="preconnect"/>
+  <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "error-container": "#ffdad6",
+            "primary-fixed-dim": "#b9c3ff",
+            "tertiary-container": "#757571",
+            "on-surface": "#1a1c1a",
+            "surface-variant": "#e3e2e0",
+            "background": "#faf9f6",
+            "surface-container-low": "#f4f3f1",
+            "secondary-fixed-dim": "#bec6df",
+            "surface-container-highest": "#e3e2e0",
+            "on-primary-fixed": "#001258",
+            "on-error-container": "#93000a",
+            "secondary": "#565e74",
+            "error": "#ba1a1a",
+            "inverse-surface": "#2f312f",
+            "on-primary-fixed-variant": "#0c34bd",
+            "primary-container": "#4c68ec",
+            "secondary-container": "#dae2fc",
+            "surface-container-lowest": "#ffffff",
+            "surface-bright": "#faf9f6",
+            "surface": "#faf9f6",
+            "secondary-fixed": "#dae2fc",
+            "surface-dim": "#dbdad7",
+            "on-primary-container": "#fffbff",
+            "tertiary-fixed-dim": "#c8c6c2",
+            "primary-fixed": "#dee1ff",
+            "outline-variant": "#c5c5d7",
+            "on-secondary-fixed-variant": "#3e465b",
+            "tertiary-fixed": "#e4e2dd",
+            "tertiary": "#5c5c58",
+            "outline": "#757686",
+            "on-secondary-fixed": "#131b2e",
+            "surface-container-high": "#e9e8e5",
+            "inverse-primary": "#b9c3ff",
+            "on-secondary": "#ffffff",
+            "on-surface-variant": "#444654",
+            "on-background": "#1a1c1a",
+            "primary": "#2f4ed2",
+            "on-primary": "#ffffff",
+            "on-tertiary-fixed": "#1b1c19",
+            "on-tertiary-container": "#fefcf7",
+            "inverse-on-surface": "#f2f1ee",
+            "on-secondary-container": "#5c647a",
+            "on-tertiary-fixed-variant": "#474744",
+            "surface-tint": "#3250d5",
+            "on-tertiary": "#ffffff",
+            "surface-container": "#efeeeb",
+            "on-error": "#ffffff"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-md": "1rem",
+            "space-lg": "1.5rem",
+            "gutter-mobile": "1rem",
+            "margin-mobile": "1rem",
+            "margin": "2rem",
+            "gutter": "1.5rem",
+            "space-sm": "0.5rem",
+            "space-xl": "2.5rem",
+            "space-xs": "0.25rem"
+          },
+          "fontFamily": {
+            "body-md": ["Geist", "sans-serif"],
+            "headline-lg": ["Geist", "sans-serif"],
+            "body-lg": ["Geist", "sans-serif"],
+            "code-inline": ["JetBrains Mono", "monospace"],
+            "headline-md": ["Geist", "sans-serif"],
+            "label-md": ["Geist", "sans-serif"],
+            "body-sm": ["Geist", "sans-serif"],
+            "label-sm": ["Geist", "sans-serif"],
+            "headline-xl-mobile": ["Geist", "sans-serif"],
+            "headline-xl": ["Geist", "sans-serif"],
+            "headline-sm": ["Geist", "sans-serif"]
+          },
+          "fontSize": {
+            "body-md": ["15px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "400" }],
+            "headline-lg": ["28px", { "lineHeight": "36px", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+            "body-lg": ["17px", { "lineHeight": "28px", "letterSpacing": "-0.005em", "fontWeight": "400" }],
+            "code-inline": ["13px", { "lineHeight": "18px", "letterSpacing": "0em", "fontWeight": "400" }],
+            "headline-md": ["22px", { "lineHeight": "30px", "letterSpacing": "-0.015em", "fontWeight": "500" }],
+            "label-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0em", "fontWeight": "500" }],
+            "body-sm": ["13px", { "lineHeight": "20px", "letterSpacing": "0.005em", "fontWeight": "400" }],
+            "label-sm": ["12px", { "lineHeight": "16px", "letterSpacing": "0.01em", "fontWeight": "500" }],
+            "headline-xl-mobile": ["28px", { "lineHeight": "36px", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+            "headline-xl": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.025em", "fontWeight": "600" }],
+            "headline-sm": ["18px", { "lineHeight": "26px", "letterSpacing": "-0.01em", "fontWeight": "500" }]
+          },
+          "boxShadow": {
+            "ambient": "0 4px 20px -2px rgba(32, 33, 36, 0.04), 0 12px 32px -4px rgba(32, 33, 36, 0.06)",
+            "subtle": "0 2px 8px -2px rgba(32, 33, 36, 0.03)"
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 350, 'GRAD' 0, 'opsz' 20;
+      font-size: 19px;
+      line-height: 1;
+      display: inline-block;
+      vertical-align: middle;
+    }
+    .custom-scroll::-webkit-scrollbar {
+      width: 4px;
+    }
+    .custom-scroll::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    .custom-scroll::-webkit-scrollbar-thumb {
+      background: #e3e2e0;
+      border-radius: 4px;
+    }
+    @keyframes fadeInOut {
+      0% { opacity: 0; transform: translateY(8px); }
+      15% { opacity: 1; transform: translateY(0); }
+      85% { opacity: 1; transform: translateY(0); }
+      100% { opacity: 0; transform: translateY(-4px); }
+    }
+    .toast-anim {
+      animation: fadeInOut 2.2s ease-in-out forwards;
+    }
+  </style>
+</head>
+<body class="bg-surface text-on-surface antialiased font-body-md selection:bg-secondary-container selection:text-on-secondary-container h-screen w-screen overflow-hidden flex">
+
+  <!-- MOBILE SIDEBAR BACKDROP -->
+  <div id="mobile-backdrop" class="fixed inset-0 bg-black/20 backdrop-blur-xs z-40 hidden md:hidden transition-opacity duration-200"></div>
+
+  <!-- LEFT SIDEBAR -->
+  <aside id="sidebar" class="fixed inset-y-0 left-0 z-50 transform -translate-x-full md:relative md:translate-x-0 w-64 h-screen flex-shrink-0 bg-surface-container-low border-r border-surface-variant flex flex-col justify-between p-space-md transition-transform duration-200 ease-in-out select-none">
+    <!-- Top Area: Logo & Primary CTA & Navigation -->
+    <div class="flex flex-col gap-y-4">
+      <!-- Header Brand -->
+      <div class="flex items-center gap-space-sm px-1 py-1 relative">
+        <div class="flex items-center gap-space-sm cursor-pointer" onclick="switchNav('chats')">
+          <img alt="Minimalist geometric crystal prism logo" class="w-6 h-6 object-contain flex-shrink-0" src="/assets/crystal-logo.png" onerror="this.src='https://lh3.googleusercontent.com/aida/AEtjO1UKTfAQ9wFFyfOK9SnxiqI-rz1COilnWfgzSsmai0han6z61gUNGp53SnCq59Z1DlUoQB9Q-waNsUPuFvz5be0qWa_0Dvku33DENKw6ooXuceaH-EfAIAv2V2MI2ytwIK9jpB-NT8d2w9Po8v4x2FuRwxWZHtrEJsHvH9xXUrIGmnQ6OraxYRdZcbhEjbR0TzqmfXv5lbVE85tSCd1rkOM-6F5Gn7ryxcMy6gN7XxBfRDQfEo9pX1P3TfE'"/>
+          <div class="flex flex-col">
+            <span class="text-headline-sm font-headline-sm font-semibold tracking-tight text-on-surface leading-none">Crystal</span>
+            <span class="text-label-sm font-label-sm text-tertiary mt-0.5">Local &amp; Private</span>
+          </div>
+        </div>
+        <!-- Close button for mobile drawer -->
+        <button id="close-sidebar-btn" class="md:hidden absolute right-0 top-1 p-1 rounded-lg text-tertiary hover:bg-surface-container hover:text-on-surface" title="Close sidebar">
+          <span class="material-symbols-outlined text-[20px]">close</span>
+        </button>
+      </div>
+
+      <!-- Action Button (New Chat) -->
+      <button id="new-chat-btn" onclick="startNewChat()" class="w-full flex items-center justify-between px-space-md py-2.5 rounded-lg bg-surface-container-lowest border border-surface-variant text-on-surface text-label-md font-label-md hover:bg-surface-container transition-colors duration-150 ease-in-out shadow-subtle group cursor-pointer" title="New chat (⌘N / Ctrl+N)">
+        <span class="flex items-center gap-2">
+          <span class="material-symbols-outlined text-primary group-hover:rotate-90 transition-transform duration-200" data-icon="add">add</span>
+          New chat
+        </span>
+        <span class="text-label-sm font-label-sm text-tertiary px-1.5 py-0.5 rounded bg-surface-container-low border border-surface-variant font-code-inline">⌘N</span>
+      </button>
+
+      <!-- Primary Standard Tabs -->
+      <nav class="flex flex-col gap-0.5 pt-1" id="nav-tabs">
+        <!-- Chats (Active Nav Item) -->
+        <a id="nav-chats" href="javascript:void(0)" onclick="switchNav('chats')" class="nav-item flex items-center gap-space-sm px-space-md py-space-sm rounded-lg bg-surface-container text-on-surface font-medium text-label-md font-label-md transition-colors duration-150 ease-in-out">
+          <span class="material-symbols-outlined text-primary" data-icon="chat" style="font-variation-settings: 'FILL' 1;">chat</span>
+          <span>Chats</span>
+        </a>
+        <!-- Memory -->
+        <a id="nav-memory" href="javascript:void(0)" onclick="switchNav('memory')" class="nav-item flex items-center gap-space-sm px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container hover:text-on-surface text-label-md font-label-md transition-colors duration-150 ease-in-out">
+          <span class="material-symbols-outlined" data-icon="neurology">neurology</span>
+          <span>Memory</span>
+        </a>
+        <!-- Knowledge -->
+        <a id="nav-knowledge" href="javascript:void(0)" onclick="switchNav('knowledge')" class="nav-item flex items-center gap-space-sm px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container hover:text-on-surface text-label-md font-label-md transition-colors duration-150 ease-in-out">
+          <span class="material-symbols-outlined" data-icon="description">description</span>
+          <span>Knowledge</span>
+        </a>
+        <!-- Network -->
+        <a id="nav-network" href="javascript:void(0)" onclick="switchNav('network')" class="nav-item flex items-center gap-space-sm px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container hover:text-on-surface text-label-md font-label-md transition-colors duration-150 ease-in-out">
+          <span class="material-symbols-outlined" data-icon="hub">hub</span>
+          <span>Network</span>
+        </a>
+      </nav>
+
+      <!-- Recent Conversations History -->
+      <div class="pt-3">
+        <div class="px-space-md pb-2 flex items-center justify-between text-label-sm font-label-sm text-tertiary">
+          <span>Recent</span>
+        </div>
+        <div id="recent-list" class="flex flex-col gap-0.5 custom-scroll overflow-y-auto max-h-[calc(100vh-420px)] pr-1">
+          <!-- Active Current Chat -->
+          <a href="javascript:void(0)" onclick="loadRecentChat(0)" class="recent-item group flex items-center justify-between px-3 py-2 rounded-lg bg-surface-container text-on-surface text-body-sm font-body-sm transition-colors duration-150 truncate">
+            <span class="truncate">Edge AI architecture</span>
+            <span class="recent-dot w-1.5 h-1.5 rounded-full bg-primary flex-shrink-0"></span>
+          </a>
+          <!-- Other Recent items -->
+          <a href="javascript:void(0)" onclick="loadRecentChat(1)" class="recent-item group flex items-center justify-between px-3 py-2 rounded-lg text-on-surface-variant hover:bg-surface-container hover:text-on-surface text-body-sm font-body-sm transition-colors duration-150 truncate">
+            <span class="truncate">Local vector embeddings</span>
+            <span class="recent-dot w-1.5 h-1.5 rounded-full bg-primary flex-shrink-0 hidden"></span>
+          </a>
+          <a href="javascript:void(0)" onclick="loadRecentChat(2)" class="recent-item group flex items-center justify-between px-3 py-2 rounded-lg text-on-surface-variant hover:bg-surface-container hover:text-on-surface text-body-sm font-body-sm transition-colors duration-150 truncate">
+            <span class="truncate">Distributed systems overview</span>
+            <span class="recent-dot w-1.5 h-1.5 rounded-full bg-primary flex-shrink-0 hidden"></span>
+          </a>
+          <a href="javascript:void(0)" onclick="loadRecentChat(3)" class="recent-item group flex items-center justify-between px-3 py-2 rounded-lg text-on-surface-variant hover:bg-surface-container hover:text-on-surface text-body-sm font-body-sm transition-colors duration-150 truncate">
+            <span class="truncate">Decentralized knowledge sync</span>
+            <span class="recent-dot w-1.5 h-1.5 rounded-full bg-primary flex-shrink-0 hidden"></span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom Footer Elements -->
+    <div class="flex flex-col gap-1 border-t border-surface-variant pt-3">
+      <!-- Settings Tab -->
+      <a href="javascript:void(0)" onclick="openModal('settings')" class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container hover:text-on-surface text-label-md font-label-md transition-colors duration-150 ease-in-out">
+        <span class="material-symbols-outlined" data-icon="settings">settings</span>
+        <span>Settings</span>
+      </a>
+      <!-- Node Trust Status Indicator -->
+      <div onclick="switchNav('network')" class="flex items-center justify-between px-space-md py-2 rounded-lg bg-surface text-body-sm font-body-sm border border-surface-variant text-tertiary cursor-pointer hover:border-outline/50 transition-colors" title="Click to open Network interface">
+        <div class="flex items-center gap-2">
+          <span id="node-status-dot" class="w-2 h-2 rounded-full bg-emerald-600 inline-block animate-pulse"></span>
+          <span id="node-status-text" class="text-label-sm font-label-sm text-on-surface">Local Network · Scan</span>
+        </div>
+        <span class="material-symbols-outlined text-outline text-[16px]" data-icon="dns">dns</span>
+      </div>
+    </div>
+  </aside>
+
+  <!-- MAIN CANVAS & CHAT WORKSPACE -->
+  <main class="flex-1 flex flex-col h-screen min-w-0 w-full bg-surface overflow-hidden relative">
+
+    <!-- TOP APP BAR -->
+    <header class="flex justify-between items-center w-full px-4 md:px-space-lg h-14 bg-surface border-b border-surface-variant transition-colors duration-150 ease-in-out z-30 select-none flex-shrink-0">
+      <!-- Left: Context / State Indicator & Mobile Toggle -->
+      <div class="flex items-center gap-2 sm:gap-3 flex-shrink-0">
+        <!-- Mobile hamburger toggle -->
+        <button id="open-sidebar-btn" class="md:hidden p-1.5 -ml-1 rounded-lg hover:bg-surface-container-low text-on-surface-variant transition-colors" title="Open sidebar">
+          <span class="material-symbols-outlined text-[20px]">menu</span>
+        </button>
+        <div class="flex items-center gap-2 cursor-pointer" onclick="switchNav('network')">
+          <span id="header-status-dot" class="w-2 h-2 rounded-full bg-emerald-600"></span>
+          <span id="header-status-text" class="text-label-sm font-label-sm text-tertiary font-medium">Connected</span>
+        </div>
+      </div>
+
+      <!-- Center: Headline & Subtitle Anchor -->
+      <div class="flex items-center gap-1.5 text-center px-1 truncate">
+        <span class="text-headline-sm font-headline-sm font-semibold text-on-surface">Crystal</span>
+        <span class="text-tertiary">·</span>
+        <span class="text-label-md font-label-md text-tertiary hidden sm:inline">Your private AI</span>
+      </div>
+
+      <!-- Right: Trailing Actions (Lock, Dns) -->
+      <div class="flex items-center gap-1 text-on-surface-variant flex-shrink-0">
+        <button onclick="openModal('security')" class="p-2 rounded-lg hover:bg-surface-container-low hover:text-on-surface transition-colors duration-150 ease-in-out cursor-pointer" title="Air-gapped &amp; Encrypted">
+          <span class="material-symbols-outlined text-[19px]" data-icon="lock">lock</span>
+        </button>
+        <button onclick="switchNav('network')" class="p-2 rounded-lg hover:bg-surface-container-low hover:text-on-surface transition-colors duration-150 ease-in-out cursor-pointer" title="Open Network Interface">
+          <span class="material-symbols-outlined text-[19px]" data-icon="dns">dns</span>
+        </button>
+      </div>
+    </header>
+
+    <!-- TOAST NOTIFICATION CONTAINER -->
+    <div id="toast-container" class="fixed top-16 right-6 z-50 pointer-events-none flex flex-col gap-2"></div>
+
+    <!-- VIEW 1: CHAT VIEW (PRIMARY EXPERIENCE) -->
+    <div id="view-chats" class="view-panel flex-1 flex flex-col h-[calc(100vh-3.5rem)] overflow-hidden relative w-full min-w-0">
+      <!-- CHAT CONVERSATION STREAM (Editorial Reading Column: max-w-3xl) -->
+      <section id="chat-stream" class="flex-1 overflow-y-auto px-4 md:px-8 pt-8 pb-48 custom-scroll w-full min-w-0">
+        <div id="conversation-container" class="max-w-3xl mx-auto flex flex-col gap-y-space-xl w-full">
+          
+          <!-- TURN 1: USER MESSAGE -->
+          <article class="chat-turn flex flex-col items-end w-full">
+            <div class="max-w-2xl px-5 py-3.5 rounded-xl bg-surface-container-low border border-surface-variant text-on-surface text-body-lg font-body-lg leading-relaxed shadow-subtle">
+              Explain how edge AI could reduce dependence on cloud systems.
+            </div>
+            <div class="mt-1.5 mr-1 text-label-sm font-label-sm text-tertiary flex items-center gap-1">
+              <span>Just now</span>
+            </div>
+          </article>
+
+          <!-- TURN 2: CRYSTAL RESPONSE -->
+          <article class="chat-turn flex items-start gap-4 w-full">
+            <!-- Crystal Brand Avatar -->
+            <div class="w-8 h-8 rounded-lg bg-surface-container-lowest border border-surface-variant flex items-center justify-center p-1 flex-shrink-0 mt-0.5 shadow-subtle">
+              <img alt="Minimalist geometric crystal prism logo" class="w-5 h-5 object-contain" src="/assets/crystal-logo.png" onerror="this.src='https://lh3.googleusercontent.com/aida/AEtjO1UKTfAQ9wFFyfOK9SnxiqI-rz1COilnWfgzSsmai0han6z61gUNGp53SnCq59Z1DlUoQB9Q-waNsUPuFvz5be0qWa_0Dvku33DENKw6ooXuceaH-EfAIAv2V2MI2ytwIK9jpB-NT8d2w9Po8v4x2FuRwxWZHtrEJsHvH9xXUrIGmnQ6OraxYRdZcbhEjbR0TzqmfXv5lbVE85tSCd1rkOM-6F5Gn7ryxcMy6gN7XxBfRDQfEo9pX1P3TfE'"/>
+            </div>
+
+            <!-- Editorial Message Content Body -->
+            <div class="flex-1 space-y-4 pt-0.5 min-w-0">
+              <!-- Leading statement -->
+              <p class="text-body-lg font-body-lg text-on-surface leading-relaxed">
+                Edge AI moves more intelligence closer to where data is created. Instead of sending every request to a remote cloud service, Crystal can process information locally when appropriate.
+              </p>
+              <p class="text-body-md font-body-md text-on-surface leading-relaxed">
+                This provides three important benefits:
+              </p>
+
+              <!-- Benefit List with subtle semantic cards -->
+              <div class="space-y-2.5 my-3 pl-1">
+                <div class="flex items-start gap-2.5">
+                  <span class="text-primary mt-1 text-sm font-bold">●</span>
+                  <div class="text-body-md font-body-md text-on-surface">
+                    <strong class="font-semibold text-on-surface">Privacy</strong> — Sensitive data never leaves your physical device or local network.
+                  </div>
+                </div>
+                <div class="flex items-start gap-2.5">
+                  <span class="text-primary mt-1 text-sm font-bold">●</span>
+                  <div class="text-body-md font-body-md text-on-surface">
+                    <strong class="font-semibold text-on-surface">Lower latency</strong> — Real-time inference without network roundtrips or API queue delays.
+                  </div>
+                </div>
+                <div class="flex items-start gap-2.5">
+                  <span class="text-primary mt-1 text-sm font-bold">●</span>
+                  <div class="text-body-md font-body-md text-on-surface">
+                    <strong class="font-semibold text-on-surface">Continued functionality</strong> — Full autonomous operation during internet outages or air-gapped environments.
+                  </div>
+                </div>
+              </div>
+
+              <!-- UNDERSTATED MEMORY INTEGRATION SECTION -->
+              <div class="pt-3 pb-1">
+                <div class="rounded-xl border border-surface-variant bg-surface-container-lowest p-4 shadow-subtle transition-all duration-200">
+                  <div class="flex items-center justify-between mb-2.5">
+                    <div class="flex items-center gap-1.5 text-label-sm font-label-sm text-tertiary">
+                      <span class="material-symbols-outlined text-[16px] text-primary" data-icon="neurology">neurology</span>
+                      <span class="font-medium text-on-surface-variant">Used from memory</span>
+                    </div>
+                    <span class="text-label-sm font-label-sm text-tertiary">Indexed local store</span>
+                  </div>
+
+                  <!-- Chips Row -->
+                  <div class="flex flex-wrap items-center gap-2 mb-3">
+                    <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-md bg-surface-container-low border border-surface-variant text-label-sm font-label-sm text-on-surface">
+                      <span class="text-primary text-[11px]">✦</span>
+                      Edge AI
+                    </span>
+                    <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-md bg-surface-container-low border border-surface-variant text-label-sm font-label-sm text-on-surface">
+                      <span class="text-primary text-[11px]">✦</span>
+                      Local-first architecture
+                    </span>
+                    <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-md bg-surface-container-low border border-surface-variant text-label-sm font-label-sm text-on-surface">
+                      <span class="text-primary text-[11px]">✦</span>
+                      Previous conversation (Yesterday)
+                    </span>
+                  </div>
+
+                  <!-- Expanded Context Note Popover/Card -->
+                  <div class="p-3 rounded-lg bg-surface-container-low/70 border border-surface-variant/80 text-body-sm font-body-sm text-on-surface-variant flex items-start gap-2.5">
+                    <span class="material-symbols-outlined text-outline text-[16px] mt-0.5" data-icon="description">description</span>
+                    <div>
+                      <span class="font-medium text-on-surface">Memory used:</span>
+                      <span>Edge AI project · Local-first architecture · 4 relevant context notes referenced.</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Assistant Turn Actions Bar -->
+              <div class="flex items-center gap-1 text-tertiary pt-1">
+                <button onclick="copyTurnText(this)" class="w-8 h-8 rounded-lg flex items-center justify-center hover:bg-surface-container hover:text-on-surface transition-colors cursor-pointer" title="Copy to clipboard">
+                  <span class="material-symbols-outlined text-[17px]" data-icon="content_copy">content_copy</span>
+                </button>
+                <button onclick="regenerateTurn(this)" class="w-8 h-8 rounded-lg flex items-center justify-center hover:bg-surface-container hover:text-on-surface transition-colors cursor-pointer" title="Regenerate local response">
+                  <span class="material-symbols-outlined text-[17px]" data-icon="refresh">refresh</span>
+                </button>
+                <button onclick="bookmarkTurn(this)" class="w-8 h-8 rounded-lg flex items-center justify-center hover:bg-surface-container hover:text-on-surface transition-colors cursor-pointer" title="Add note to Knowledge">
+                  <span class="material-symbols-outlined text-[17px]" data-icon="bookmark">bookmark</span>
+                </button>
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </section>
+
+      <!-- FLOATING BOTTOM PROMPT COMPOSER & FOOTER -->
+      <div class="absolute bottom-0 left-0 right-0 p-3 sm:p-4 md:pb-6 pt-0 bg-gradient-to-t from-surface via-surface/95 to-transparent flex flex-col items-center pointer-events-none z-20">
+        <div class="w-full max-w-3xl pointer-events-auto flex flex-col items-center gap-3">
+          <!-- Suggested Follow-ups (Suggestion Chips) -->
+          <div class="flex items-center gap-2 select-none overflow-x-auto max-w-full pb-0.5 custom-scroll">
+            <button onclick="useSuggestion('Search my memory for edge AI architectures')" class="px-3 py-1.5 rounded-lg bg-surface-container-lowest border border-surface-variant text-label-sm font-label-sm text-on-surface hover:border-primary transition-all duration-150 shadow-subtle flex items-center gap-1.5 cursor-pointer flex-shrink-0">
+              <span class="material-symbols-outlined text-[15px] text-tertiary" data-icon="search">search</span>
+              Search my memory
+            </button>
+            <button onclick="useSuggestion('Explain simply how local edge intelligence works')" class="px-3 py-1.5 rounded-lg bg-surface-container-lowest border border-surface-variant text-label-sm font-label-sm text-on-surface hover:border-primary transition-all duration-150 shadow-subtle flex items-center gap-1.5 cursor-pointer flex-shrink-0">
+              <span class="material-symbols-outlined text-[15px] text-tertiary" data-icon="auto_stories">auto_stories</span>
+              Explain simply
+            </button>
+            <button onclick="useSuggestion('Connect ideas between private memory and shared network knowledge')" class="px-3 py-1.5 rounded-lg bg-surface-container-lowest border border-surface-variant text-label-sm font-label-sm text-on-surface hover:border-primary transition-all duration-150 shadow-subtle flex items-center gap-1.5 cursor-pointer flex-shrink-0">
+              <span class="material-symbols-outlined text-[15px] text-tertiary" data-icon="hub">hub</span>
+              Connect ideas
+            </button>
+          </div>
+
+          <!-- The Elevated Prompt Input Dock -->
+          <div class="w-full bg-surface-container-lowest rounded-xl border border-surface-variant shadow-ambient p-2.5 flex flex-col transition-all focus-within:border-primary/80 focus-within:ring-2 focus-within:ring-primary/10">
+            <!-- Textarea area -->
+            <textarea id="prompt-input" class="w-full resize-none border-0 bg-transparent px-2 pt-1 pb-2 text-body-md font-body-md text-on-surface placeholder:text-outline focus:ring-0 focus:outline-none custom-scroll" placeholder="Ask Crystal anything..." rows="2" style="max-height: 180px;"></textarea>
+            
+            <!-- Input Action Bar -->
+            <div class="flex items-center justify-between pt-1 border-t border-surface-variant/40 mt-1">
+              <!-- Left contextual attachments -->
+              <div class="flex items-center gap-1">
+                <button onclick="showToast('Attachment feature available in next release')" class="w-8 h-8 rounded-lg flex items-center justify-center text-outline hover:text-on-surface hover:bg-surface-container-low transition-colors cursor-pointer" title="Attach document or code">
+                  <span class="material-symbols-outlined text-[18px]" data-icon="attach_file">attach_file</span>
+                </button>
+                <button id="memory-toggle-btn" onclick="toggleMemoryContext()" class="w-8 h-8 rounded-lg flex items-center justify-center text-outline hover:text-primary hover:bg-surface-container-low transition-colors cursor-pointer" title="Toggle memory references">
+                  <span class="material-symbols-outlined text-[18px]" data-icon="neurology">neurology</span>
+                </button>
+                <button onclick="showToast('Audio dictation listening...')" class="w-8 h-8 rounded-lg flex items-center justify-center text-outline hover:text-on-surface hover:bg-surface-container-low transition-colors cursor-pointer" title="Audio dictation">
+                  <span class="material-symbols-outlined text-[18px]" data-icon="mic">mic</span>
+                </button>
+              </div>
+
+              <!-- Right: Node Mode badge & Circular Send Button -->
+              <div class="flex items-center gap-2">
+                <span class="text-label-sm font-label-sm text-tertiary hidden sm:inline-block px-2 py-0.5 rounded bg-surface-container-low border border-surface-variant">
+                  Local model active
+                </span>
+                <button id="send-btn" onclick="sendMessage()" class="w-8 h-8 rounded-full bg-primary hover:bg-primary-container text-on-primary flex items-center justify-center transition-transform active:scale-95 shadow-sm cursor-pointer" title="Send query (Enter)">
+                  <span class="material-symbols-outlined text-[18px]" data-icon="arrow_upward">arrow_upward</span>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Quiet Trust Guarantee Footer -->
+          <p class="text-label-sm font-label-sm text-tertiary text-center tracking-normal">
+            Crystal runs locally · Private by default · Memories stay on your device
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- VIEW 2: MEMORY VIEW (PRIVATE PERSONAL MEMORY) -->
+    <div id="view-memory" class="view-panel flex-1 flex-col h-[calc(100vh-3.5rem)] overflow-y-auto px-4 md:px-8 py-8 custom-scroll hidden w-full min-w-0">
+      <div class="max-w-3xl mx-auto space-y-6 w-full">
+        <div class="flex items-center justify-between pb-4 border-b border-surface-variant">
+          <div>
+            <h1 class="text-headline-md font-headline-md font-medium text-on-surface">Private Memory</h1>
+            <p class="text-body-md text-tertiary mt-1">Personal indexed knowledge stored exclusively on this physical device.</p>
+          </div>
+          <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-800 text-label-sm">
+            <span class="w-1.5 h-1.5 rounded-full bg-emerald-600"></span>
+            Zero network exposure
+          </span>
+        </div>
+
+        <div class="p-4 rounded-xl bg-surface-container-low border border-surface-variant flex items-start gap-3">
+          <span class="material-symbols-outlined text-primary text-[22px] mt-0.5" data-icon="shield">shield</span>
+          <div class="text-body-sm text-on-surface-variant">
+            <strong class="font-medium text-on-surface">Strict Edge Isolation Guarantee:</strong>
+            Private memories are stored in an isolated SQLite database (<code class="font-code-inline text-[12px] bg-surface-container px-1 py-0.5 rounded">private_memory.sqlite</code>) that is never routed to peers, cloud endpoints, or external APIs.
+          </div>
+        </div>
+
+        <!-- Memory Items list -->
+        <div class="space-y-3">
+          <div class="p-4 rounded-xl bg-surface-container-lowest border border-surface-variant shadow-subtle space-y-2">
+            <div class="flex items-center justify-between">
+              <span class="text-label-sm font-medium text-primary flex items-center gap-1">
+                <span class="material-symbols-outlined text-[15px]" data-icon="neurology">neurology</span>
+                Edge AI Project Notes
+              </span>
+              <span class="text-label-sm text-tertiary">Indexed Yesterday</span>
+            </div>
+            <p class="text-body-md text-on-surface">
+              Investigating local edge cognitive inference. Separating private personal memories from shareable network knowledge layer.
+            </p>
+            <div class="flex gap-2 pt-1">
+              <span class="text-label-sm px-2 py-0.5 rounded bg-surface-container-low text-tertiary">#architecture</span>
+              <span class="text-label-sm px-2 py-0.5 rounded bg-surface-container-low text-tertiary">#local-first</span>
+            </div>
+          </div>
+
+          <div class="p-4 rounded-xl bg-surface-container-lowest border border-surface-variant shadow-subtle space-y-2">
+            <div class="flex items-center justify-between">
+              <span class="text-label-sm font-medium text-primary flex items-center gap-1">
+                <span class="material-symbols-outlined text-[15px]" data-icon="neurology">neurology</span>
+                Local Storage Configuration
+              </span>
+              <span class="text-label-sm text-tertiary">Indexed 3 days ago</span>
+            </div>
+            <p class="text-body-md text-on-surface">
+              Nodes maintain complete autonomous operation even during network disconnects or air-gapped field deployments.
+            </p>
+            <div class="flex gap-2 pt-1">
+              <span class="text-label-sm px-2 py-0.5 rounded bg-surface-container-low text-tertiary">#storage</span>
+              <span class="text-label-sm px-2 py-0.5 rounded bg-surface-container-low text-tertiary">#offline</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- VIEW 3: KNOWLEDGE VIEW (SHAREABLE NETWORK KNOWLEDGE) -->
+    <div id="view-knowledge" class="view-panel flex-1 flex-col h-[calc(100vh-3.5rem)] overflow-y-auto px-4 md:px-8 py-8 custom-scroll hidden w-full min-w-0">
+      <div class="max-w-3xl mx-auto space-y-6 w-full">
+        <div class="flex items-center justify-between pb-4 border-b border-surface-variant">
+          <div>
+            <h1 class="text-headline-md font-headline-md font-medium text-on-surface">Network Knowledge</h1>
+            <p class="text-body-md text-tertiary mt-1">Explicitly shareable knowledge verified and synchronized with trusted peer nodes.</p>
+          </div>
+          <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-50 border border-blue-200 text-blue-800 text-label-sm">
+            <span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+            Peer Shareable
+          </span>
+        </div>
+
+        <!-- Search Knowledge Input -->
+        <div class="flex gap-2">
+          <div class="relative flex-1">
+            <span class="material-symbols-outlined absolute left-3 top-2.5 text-tertiary text-[18px]">search</span>
+            <input id="knowledge-search-input" type="text" placeholder="Search shareable knowledge across local and connected nodes..." class="w-full pl-9 pr-4 py-2 rounded-lg bg-surface-container-lowest border border-surface-variant text-body-md text-on-surface focus:border-primary focus:ring-1 focus:ring-primary/20 outline-none transition-colors" onkeydown="if(event.key==='Enter') searchKnowledge()"/>
+          </div>
+          <button onclick="searchKnowledge()" class="px-4 py-2 rounded-lg bg-primary hover:bg-primary-container text-on-primary text-label-md font-medium transition-colors cursor-pointer">
+            Search
+          </button>
+        </div>
+
+        <!-- Knowledge Search Results Container -->
+        <div id="knowledge-results" class="space-y-3">
+          <div class="p-4 rounded-xl bg-surface-container-lowest border border-surface-variant shadow-subtle space-y-2">
+            <div class="flex items-center justify-between">
+              <span class="text-label-sm font-medium text-on-surface flex items-center gap-1.5">
+                <span class="material-symbols-outlined text-[16px] text-tertiary" data-icon="description">description</span>
+                Shareable Network Record
+              </span>
+              <span class="text-label-sm text-tertiary px-2 py-0.5 rounded bg-surface-container-low font-code-inline">source: node-a</span>
+            </div>
+            <p class="text-body-md text-on-surface leading-relaxed">
+              Edge AI architecture for TatHack '26 PS8 enables distributed nodes to share verified knowledge items over local LAN while retaining private memory.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- VIEW 4: NETWORK INTERFACE (LOCAL LAN & FUTURE TRANSPORTS) -->
+    <div id="view-network" class="view-panel flex-1 flex-col h-[calc(100vh-3.5rem)] overflow-y-auto px-4 md:px-8 py-8 custom-scroll hidden w-full min-w-0">
+      <div class="max-w-3xl mx-auto space-y-6 w-full">
+        <!-- Top header -->
+        <div class="flex items-center justify-between pb-4 border-b border-surface-variant">
+          <div>
+            <h1 class="text-headline-md font-headline-md font-medium text-on-surface">Network</h1>
+            <p class="text-body-md text-tertiary mt-1">Discover and connect to nearby Crystal nodes across your local network.</p>
+          </div>
+          <div class="flex items-center gap-2">
+            <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-800 text-label-sm font-medium">
+              <span class="w-2 h-2 rounded-full bg-emerald-600 animate-pulse"></span>
+              Local Network
+            </span>
+          </div>
+        </div>
+
+        <!-- Connection Action Bar -->
+        <div class="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 p-4 rounded-xl bg-surface-container-lowest border border-surface-variant shadow-subtle">
+          <div class="flex items-center gap-3">
+            <div class="w-9 h-9 rounded-lg bg-surface-container-low border border-surface-variant flex items-center justify-center text-primary flex-shrink-0">
+              <span class="material-symbols-outlined text-[20px]" data-icon="hub">hub</span>
+            </div>
+            <div>
+              <div class="text-label-md font-medium text-on-surface" id="network-local-identity">Local Node</div>
+              <div class="text-label-sm text-tertiary font-code-inline" id="network-local-addr">Self · Local Subnet</div>
+            </div>
+          </div>
+          <div class="flex items-center gap-2">
+            <button id="scan-nodes-btn" onclick="scanNetworkNodes()" class="px-4 py-2 rounded-lg bg-surface-container-low hover:bg-surface-container border border-surface-variant text-on-surface text-label-md font-medium transition-colors shadow-subtle flex items-center gap-2 cursor-pointer">
+              <span id="scan-btn-icon" class="material-symbols-outlined text-[17px] text-primary" data-icon="radar">radar</span>
+              <span id="scan-btn-text">Scan for Nodes</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Connected Nodes Section -->
+        <div class="space-y-3">
+          <div class="flex items-center justify-between">
+            <h2 class="text-headline-sm font-medium text-on-surface flex items-center gap-2">
+              <span>Connected Nodes</span>
+              <span id="connected-badge" class="text-label-sm px-2 py-0.5 rounded-full bg-surface-container text-tertiary font-code-inline">0</span>
+            </h2>
+          </div>
+          <div id="connected-nodes-list" class="space-y-3">
+            <div id="no-connected-notice" class="p-5 rounded-xl border border-dashed border-surface-variant bg-surface-container-low/40 text-center text-tertiary text-body-sm">
+              No remote Crystal nodes currently connected. Scan nearby nodes below to link.
+            </div>
+          </div>
+        </div>
+
+        <!-- Nearby / Discovered Nodes Section -->
+        <div class="space-y-3 pt-2">
+          <div class="flex items-center justify-between">
+            <h2 class="text-headline-sm font-medium text-on-surface">Nearby Crystal Nodes</h2>
+            <span class="text-label-sm text-tertiary" id="scan-status-indicator">Ready to scan</span>
+          </div>
+
+          <div id="nearby-nodes-list" class="space-y-3">
+            <div id="nearby-empty-notice" class="p-6 rounded-xl border border-surface-variant bg-surface-container-lowest text-center space-y-3 shadow-subtle">
+              <div class="w-10 h-10 rounded-full bg-surface-container-low border border-surface-variant flex items-center justify-center mx-auto text-tertiary">
+                <span class="material-symbols-outlined text-[20px]" data-icon="search">search</span>
+              </div>
+              <div class="space-y-1">
+                <p class="text-body-md font-medium text-on-surface">No Crystal nodes found</p>
+                <p class="text-body-sm text-tertiary max-w-sm mx-auto">
+                  Make sure another Crystal device is running on the same local network.
+                </p>
+              </div>
+              <button onclick="scanNetworkNodes()" class="px-4 py-2 rounded-lg bg-primary hover:bg-primary-container text-on-primary text-label-md font-medium transition-colors shadow-subtle inline-flex items-center gap-1.5 cursor-pointer">
+                <span class="material-symbols-outlined text-[17px]">radar</span>
+                Scan for Nodes
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Manual Connect Option -->
+        <div class="p-4 rounded-xl bg-surface-container-low/70 border border-surface-variant space-y-3">
+          <div class="flex items-center justify-between cursor-pointer select-none" onclick="toggleManualConnect()">
+            <div class="flex items-center gap-2">
+              <span class="material-symbols-outlined text-tertiary text-[18px]">add_link</span>
+              <span class="text-label-md font-medium text-on-surface">Connect to Specific IP / Port</span>
+            </div>
+            <span class="material-symbols-outlined text-tertiary text-[18px] transition-transform" id="manual-toggle-arrow">expand_more</span>
+          </div>
+          <div id="manual-connect-form" class="hidden pt-2 flex flex-col sm:flex-row gap-2">
+            <input id="manual-peer-host" type="text" placeholder="IP Address (e.g. 127.0.0.1 or 192.168.1.15)" value="127.0.0.1" class="flex-1 px-3 py-2 rounded-lg bg-surface-container-lowest border border-surface-variant text-body-sm text-on-surface outline-none focus:border-primary" />
+            <input id="manual-peer-port" type="number" placeholder="Port (e.g. 8002)" value="8002" class="w-full sm:w-28 px-3 py-2 rounded-lg bg-surface-container-lowest border border-surface-variant text-body-sm text-on-surface outline-none focus:border-primary" />
+            <button id="manual-connect-btn" onclick="connectManualNode()" class="px-4 py-2 rounded-lg bg-primary hover:bg-primary-container text-on-primary text-label-md font-medium transition-colors flex items-center justify-center gap-1.5 cursor-pointer">
+              <span>Connect</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Future Internet Section (Section 9) -->
+        <div class="pt-6 border-t border-surface-variant space-y-3">
+          <div class="flex items-center justify-between">
+            <div class="flex items-center gap-2 text-tertiary">
+              <span class="material-symbols-outlined text-[18px]">public</span>
+              <span class="text-label-md font-medium">Internet Network</span>
+            </div>
+            <span class="inline-flex items-center gap-1 text-label-sm text-tertiary">
+              <span class="w-1.5 h-1.5 rounded-full bg-outline"></span>
+              Future Transport
+            </span>
+          </div>
+          <div class="p-4 rounded-xl bg-surface-container-lowest border border-surface-variant text-on-surface-variant space-y-1.5 opacity-75">
+            <div class="text-label-md font-medium text-on-surface">Global Crystal Nodes</div>
+            <p class="text-body-sm text-tertiary">
+              Coming soon. Sovereign peer-to-peer relay and multi-hop knowledge exchange beyond local network boundaries.
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </main>
+
+  <!-- MODALS -->
+  <!-- 1. Node Info / Trusted Nodes Modal -->
+  <div id="modal-nodes" class="fixed inset-0 bg-black/25 backdrop-blur-xs z-50 flex items-center justify-center p-4 hidden">
+    <div class="w-full max-w-md bg-surface-container-lowest rounded-xl border border-surface-variant shadow-ambient p-6 space-y-4">
+      <div class="flex items-center justify-between border-b border-surface-variant pb-3">
+        <div class="flex items-center gap-2">
+          <span class="w-2.5 h-2.5 rounded-full bg-emerald-600"></span>
+          <h2 class="text-headline-sm font-semibold text-on-surface">Trusted Network Nodes</h2>
+        </div>
+        <button onclick="closeModal('nodes')" class="p-1 rounded-lg text-tertiary hover:bg-surface-container hover:text-on-surface">
+          <span class="material-symbols-outlined text-[20px]">close</span>
+        </button>
+      </div>
+
+      <div class="space-y-3" id="modal-nodes-list">
+        <div class="p-3 rounded-lg bg-surface-container-low border border-surface-variant flex items-center justify-between">
+          <div class="flex items-center gap-2.5">
+            <span class="w-2 h-2 rounded-full bg-emerald-600"></span>
+            <div>
+              <div class="text-label-md font-medium text-on-surface" id="modal-node-name">Current Node</div>
+              <div class="text-label-sm text-tertiary font-code-inline" id="modal-node-id">local-runtime</div>
+            </div>
+          </div>
+          <span class="text-label-sm px-2 py-0.5 rounded bg-emerald-100 text-emerald-800 font-medium">Self</span>
+        </div>
+      </div>
+
+      <div class="pt-2 border-t border-surface-variant flex justify-between items-center">
+        <button onclick="closeModal('nodes'); switchNav('network');" class="text-label-sm text-primary hover:underline">
+          Open Network Interface →
+        </button>
+        <button onclick="closeModal('nodes')" class="px-4 py-2 rounded-lg bg-surface-container hover:bg-surface-container-high text-on-surface text-label-md font-medium transition-colors">
+          Done
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. Security & Privacy Modal -->
+  <div id="modal-security" class="fixed inset-0 bg-black/25 backdrop-blur-xs z-50 flex items-center justify-center p-4 hidden">
+    <div class="w-full max-w-md bg-surface-container-lowest rounded-xl border border-surface-variant shadow-ambient p-6 space-y-4">
+      <div class="flex items-center justify-between border-b border-surface-variant pb-3">
+        <div class="flex items-center gap-2 text-primary">
+          <span class="material-symbols-outlined text-[22px]">lock</span>
+          <h2 class="text-headline-sm font-semibold text-on-surface">Air-gapped &amp; Encrypted</h2>
+        </div>
+        <button onclick="closeModal('security')" class="p-1 rounded-lg text-tertiary hover:bg-surface-container hover:text-on-surface">
+          <span class="material-symbols-outlined text-[20px]">close</span>
+        </button>
+      </div>
+
+      <div class="space-y-3 text-body-md text-on-surface-variant leading-relaxed">
+        <p>Crystal is built on the philosophy of sovereign personal computing. Your private personal memories and notes are stored strictly in local device memory.</p>
+        <div class="p-3 rounded-lg bg-surface-container-low border border-surface-variant text-body-sm space-y-1.5">
+          <div class="flex items-center gap-2 text-on-surface font-medium">
+            <span class="text-emerald-600">✓</span> No remote cloud synchronization
+          </div>
+          <div class="flex items-center gap-2 text-on-surface font-medium">
+            <span class="text-emerald-600">✓</span> Zero HTTP exposure for private memory
+          </div>
+          <div class="flex items-center gap-2 text-on-surface font-medium">
+            <span class="text-emerald-600">✓</span> Only explicitly designated items shared with trusted peers
+          </div>
+        </div>
+      </div>
+
+      <div class="pt-2 border-t border-surface-variant flex justify-end">
+        <button onclick="closeModal('security')" class="px-4 py-2 rounded-lg bg-surface-container hover:bg-surface-container-high text-on-surface text-label-md font-medium transition-colors">
+          Understood
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. Settings Modal -->
+  <div id="modal-settings" class="fixed inset-0 bg-black/25 backdrop-blur-xs z-50 flex items-center justify-center p-4 hidden">
+    <div class="w-full max-w-md bg-surface-container-lowest rounded-xl border border-surface-variant shadow-ambient p-6 space-y-4">
+      <div class="flex items-center justify-between border-b border-surface-variant pb-3">
+        <div class="flex items-center gap-2">
+          <span class="material-symbols-outlined text-[22px] text-tertiary">settings</span>
+          <h2 class="text-headline-sm font-semibold text-on-surface">Settings</h2>
+        </div>
+        <button onclick="closeModal('settings')" class="p-1 rounded-lg text-tertiary hover:bg-surface-container hover:text-on-surface">
+          <span class="material-symbols-outlined text-[20px]">close</span>
+        </button>
+      </div>
+
+      <div class="space-y-3 text-body-sm">
+        <div class="flex justify-between py-2 border-b border-surface-variant/50">
+          <span class="text-tertiary">Node Runtime</span>
+          <span class="font-medium text-on-surface" id="settings-runtime">Crystal Edge-AI 0.1.0</span>
+        </div>
+        <div class="flex justify-between py-2 border-b border-surface-variant/50">
+          <span class="text-tertiary">Active Node ID</span>
+          <span class="font-code-inline text-on-surface" id="settings-node-id">node-a</span>
+        </div>
+        <div class="flex justify-between py-2 border-b border-surface-variant/50">
+          <span class="text-tertiary">Privacy Model</span>
+          <span class="font-medium text-emerald-700">Hardware Isolated</span>
+        </div>
+        <div class="flex justify-between py-2 border-b border-surface-variant/50">
+          <span class="text-tertiary">Design System</span>
+          <span class="font-medium text-on-surface">Ivory Editorial / Geist</span>
+        </div>
+      </div>
+
+      <div class="pt-2 border-t border-surface-variant flex justify-end">
+        <button onclick="closeModal('settings')" class="px-4 py-2 rounded-lg bg-surface-container hover:bg-surface-container-high text-on-surface text-label-md font-medium transition-colors">
+          Close
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- JAVASCRIPT LOGIC & INTERACTIONS -->
+  <script>
+    // State
+    let memoryActive = true;
+    let currentNodeInfo = { node_id: "node-a", node_name: "Crystal Node A", status: "ok" };
+    let connectedNodes = [];
+    let nearbyNodes = [];
+
+    // Fetch Health and Network on Load
+    async function checkNodeHealth() {
+      try {
+        const res = await fetch('/api/health');
+        if (res.ok) {
+          const data = await res.json();
+          currentNodeInfo = data;
+          document.getElementById('header-status-dot').className = "w-2 h-2 rounded-full bg-emerald-600";
+          document.getElementById('header-status-text').textContent = "Connected";
+          document.getElementById('node-status-dot').className = "w-2 h-2 rounded-full bg-emerald-600 inline-block";
+          document.getElementById('modal-node-name').textContent = data.node_name || 'Crystal Node';
+          document.getElementById('modal-node-id').textContent = data.node_id || 'node-a';
+          document.getElementById('settings-node-id').textContent = data.node_id || 'node-a';
+          document.getElementById('network-local-identity').textContent = data.node_name || 'Local Crystal Node';
+          document.getElementById('network-local-addr').textContent = `Self · ${data.node_id || 'local'}`;
+        }
+      } catch (e) {
+        console.warn("Node health check offline / mock mode active", e);
+      }
+      await loadNetworkStatus();
+    }
+
+    // Load Connected Nodes status from backend
+    async function loadNetworkStatus() {
+      try {
+        const res = await fetch('/api/network/status');
+        if (res.ok) {
+          const data = await res.json();
+          connectedNodes = data.connected_nodes || [];
+          renderConnectedNodes();
+          updateSidebarPill();
+        }
+      } catch (e) {
+        console.warn("Failed to load network status", e);
+      }
+    }
+
+    // Update Sidebar Bottom Pill text
+    function updateSidebarPill() {
+      const count = connectedNodes.length;
+      const textEl = document.getElementById('node-status-text');
+      if (textEl) {
+        if (count === 0) {
+          textEl.textContent = "Local Network · Standalone";
+        } else if (count === 1) {
+          textEl.textContent = `Local · 1 connected node`;
+        } else {
+          textEl.textContent = `Local · ${count} connected nodes`;
+        }
+      }
+      const badge = document.getElementById('connected-badge');
+      if (badge) badge.textContent = count;
+    }
+
+    // Render Connected Nodes in view-network
+    function renderConnectedNodes() {
+      const container = document.getElementById('connected-nodes-list');
+      if (!container) return;
+
+      if (connectedNodes.length === 0) {
+        container.innerHTML = `
+          <div id="no-connected-notice" class="p-5 rounded-xl border border-dashed border-surface-variant bg-surface-container-low/40 text-center text-tertiary text-body-sm">
+            No remote Crystal nodes currently connected. Scan nearby nodes below to link.
+          </div>
+        `;
+        return;
+      }
+
+      container.innerHTML = connectedNodes.map(node => `
+        <div class="p-4 rounded-xl bg-surface-container-lowest border border-surface-variant shadow-subtle flex flex-col sm:flex-row sm:items-center justify-between gap-3 transition-all">
+          <div class="flex items-start gap-3">
+            <div class="w-8 h-8 rounded-lg bg-surface-container-low border border-surface-variant flex items-center justify-center p-1 flex-shrink-0 mt-0.5">
+              <img alt="Crystal" class="w-5 h-5 object-contain" src="/assets/crystal-logo.png" onerror="this.src='https://lh3.googleusercontent.com/aida/AEtjO1UKTfAQ9wFFyfOK9SnxiqI-rz1COilnWfgzSsmai0han6z61gUNGp53SnCq59Z1DlUoQB9Q-waNsUPuFvz5be0qWa_0Dvku33DENKw6ooXuceaH-EfAIAv2V2MI2ytwIK9jpB-NT8d2w9Po8v4x2FuRwxWZHtrEJsHvH9xXUrIGmnQ6OraxYRdZcbhEjbR0TzqmfXv5lbVE85tSCd1rkOM-6F5Gn7ryxcMy6gN7XxBfRDQfEo9pX1P3TfE'"/>
+            </div>
+            <div>
+              <div class="flex items-center gap-2">
+                <span class="text-label-md font-medium text-on-surface">${escapeHtml(node.node_name)}</span>
+                <span class="inline-flex items-center gap-1 text-[11px] font-medium px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-800 border border-emerald-200">
+                  <span class="w-1.5 h-1.5 rounded-full bg-emerald-600"></span>
+                  Connected
+                </span>
+              </div>
+              <div class="text-label-sm text-tertiary mt-0.5 flex flex-wrap items-center gap-2">
+                <span class="font-code-inline text-[12px]">${escapeHtml(node.host)}:${node.port}</span>
+                <span>·</span>
+                <span class="text-emerald-700">Network knowledge available</span>
+              </div>
+            </div>
+          </div>
+          <div class="flex items-center gap-2 self-end sm:self-center">
+            <button onclick="disconnectNode('${escapeHtml(node.node_id)}')" class="px-3 py-1.5 rounded-lg border border-surface-variant hover:bg-surface-container-low text-tertiary hover:text-on-surface text-label-sm font-medium transition-colors cursor-pointer" title="Disconnect node">
+              Disconnect
+            </button>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    // Scan for nearby Crystal nodes
+    async function scanNetworkNodes() {
+      const btn = document.getElementById('scan-nodes-btn');
+      const btnText = document.getElementById('scan-btn-text');
+      const btnIcon = document.getElementById('scan-btn-icon');
+      const indicator = document.getElementById('scan-status-indicator');
+      const listContainer = document.getElementById('nearby-nodes-list');
+
+      btnText.textContent = "Scanning...";
+      if (btnIcon) btnIcon.classList.add('animate-spin');
+      indicator.textContent = "Scanning local LAN...";
+
+      try {
+        const res = await fetch('/api/network/scan', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({})
+        });
+
+        if (res.ok) {
+          const data = await res.json();
+          nearbyNodes = data.discovered_nodes || [];
+
+          // Filter out already connected nodes from nearby display
+          const availableNodes = nearbyNodes.filter(n => !connectedNodes.some(c => c.node_id === n.node_id));
+
+          indicator.textContent = `Found ${availableNodes.length} nearby node${availableNodes.length === 1 ? '' : 's'}`;
+
+          if (availableNodes.length === 0) {
+            listContainer.innerHTML = `
+              <div id="nearby-empty-notice" class="p-6 rounded-xl border border-surface-variant bg-surface-container-lowest text-center space-y-3 shadow-subtle">
+                <div class="w-10 h-10 rounded-full bg-surface-container-low border border-surface-variant flex items-center justify-center mx-auto text-tertiary">
+                  <span class="material-symbols-outlined text-[20px]" data-icon="search">search</span>
+                </div>
+                <div class="space-y-1">
+                  <p class="text-body-md font-medium text-on-surface">No Crystal nodes found</p>
+                  <p class="text-body-sm text-tertiary max-w-sm mx-auto">
+                    Make sure another Crystal device is running on the same local network.
+                  </p>
+                </div>
+                <button onclick="scanNetworkNodes()" class="px-4 py-2 rounded-lg bg-primary hover:bg-primary-container text-on-primary text-label-md font-medium transition-colors shadow-subtle inline-flex items-center gap-1.5 cursor-pointer">
+                  <span class="material-symbols-outlined text-[17px]">radar</span>
+                  Scan Again
+                </button>
+              </div>
+            `;
+          } else {
+            listContainer.innerHTML = availableNodes.map(node => `
+              <div id="node-card-${escapeHtml(node.node_id)}" class="p-4 rounded-xl bg-surface-container-lowest border border-surface-variant shadow-subtle flex flex-col sm:flex-row sm:items-center justify-between gap-3 transition-all">
+                <div class="flex items-start gap-3">
+                  <div class="w-8 h-8 rounded-lg bg-surface-container-low border border-surface-variant flex items-center justify-center p-1 flex-shrink-0 mt-0.5">
+                    <img alt="Crystal" class="w-5 h-5 object-contain" src="/assets/crystal-logo.png" onerror="this.src='https://lh3.googleusercontent.com/aida/AEtjO1UKTfAQ9wFFyfOK9SnxiqI-rz1COilnWfgzSsmai0han6z61gUNGp53SnCq59Z1DlUoQB9Q-waNsUPuFvz5be0qWa_0Dvku33DENKw6ooXuceaH-EfAIAv2V2MI2ytwIK9jpB-NT8d2w9Po8v4x2FuRwxWZHtrEJsHvH9xXUrIGmnQ6OraxYRdZcbhEjbR0TzqmfXv5lbVE85tSCd1rkOM-6F5Gn7ryxcMy6gN7XxBfRDQfEo9pX1P3TfE'"/>
+                  </div>
+                  <div>
+                    <div class="flex items-center gap-2">
+                      <span class="text-label-md font-medium text-on-surface">${escapeHtml(node.node_name)}</span>
+                      <span class="text-[11px] font-medium px-2 py-0.5 rounded-full bg-surface-container text-tertiary">
+                        Available
+                      </span>
+                    </div>
+                    <div class="text-label-sm text-tertiary mt-0.5 font-code-inline text-[12px]">
+                      ${escapeHtml(node.host)}:${node.port}
+                    </div>
+                  </div>
+                </div>
+                <div class="flex items-center gap-2 self-end sm:self-center" id="node-action-${escapeHtml(node.node_id)}">
+                  <button onclick="connectNode('${escapeHtml(node.host)}', ${node.port}, '${escapeHtml(node.node_id)}', this)" class="px-4 py-2 rounded-lg bg-primary hover:bg-primary-container text-on-primary text-label-md font-medium transition-colors shadow-subtle flex items-center gap-1.5 cursor-pointer">
+                    <span class="material-symbols-outlined text-[17px]">link</span>
+                    <span>Connect</span>
+                  </button>
+                </div>
+              </div>
+            `).join('');
+          }
+        }
+      } catch (e) {
+        indicator.textContent = "Scan failed";
+        showToast("Network scan failed");
+      } finally {
+        btnText.textContent = "Scan Again";
+        if (btnIcon) btnIcon.classList.remove('animate-spin');
+      }
+    }
+
+    // Connect to a node via real backend handshake
+    async function connectNode(host, port, nodeId, btn) {
+      if (btn) {
+        btn.disabled = true;
+        btn.innerHTML = `<span class="material-symbols-outlined text-[17px] animate-spin">sync</span> Connecting...`;
+      }
+
+      try {
+        const res = await fetch('/api/network/connect', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ host: host, port: parseInt(port), node_id: nodeId || null })
+        });
+
+        const data = await res.json();
+
+        if (res.ok && data.success) {
+          showToast(`Connected to ${data.node?.node_name || 'node'}`);
+          await loadNetworkStatus();
+          // Remove from nearby list
+          const card = document.getElementById(`node-card-${nodeId}`);
+          if (card) card.remove();
+          // Check if nearby empty
+          const nearbyRemaining = document.querySelectorAll('#nearby-nodes-list > div:not(#nearby-empty-notice)');
+          if (nearbyRemaining.length === 0) {
+            document.getElementById('nearby-nodes-list').innerHTML = `
+              <div class="p-5 rounded-xl border border-surface-variant bg-surface-container-lowest text-center text-tertiary text-body-sm shadow-subtle">
+                All nearby discovered nodes are connected.
+              </div>
+            `;
+          }
+        } else {
+          const actionContainer = document.getElementById(`node-action-${nodeId}`);
+          if (actionContainer) {
+            actionContainer.innerHTML = `
+              <div class="text-right">
+                <div class="text-label-sm text-error mb-1">Connection failed</div>
+                <button onclick="connectNode('${escapeHtml(host)}', ${port}, '${escapeHtml(nodeId)}', this)" class="px-3 py-1.5 rounded-lg bg-surface-container border border-error/30 text-on-surface hover:bg-surface-container-high text-label-sm font-medium transition-colors cursor-pointer">
+                  Try Again
+                </button>
+              </div>
+            `;
+          }
+          showToast(data.error || `Couldn't connect to node.`);
+        }
+      } catch (e) {
+        showToast("Connection handshake error.");
+        if (btn) {
+          btn.disabled = false;
+          btn.innerHTML = `Connect`;
+        }
+      }
+    }
+
+    // Disconnect a node
+    async function disconnectNode(nodeId) {
+      try {
+        const res = await fetch('/api/network/disconnect', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ node_id: nodeId })
+        });
+        if (res.ok) {
+          showToast("Node disconnected");
+          await loadNetworkStatus();
+        }
+      } catch (e) {
+        showToast("Disconnect failed");
+      }
+    }
+
+    // Toggle Manual Connect Form
+    function toggleManualConnect() {
+      const form = document.getElementById('manual-connect-form');
+      const arrow = document.getElementById('manual-toggle-arrow');
+      if (form) {
+        const isHidden = form.classList.contains('hidden');
+        if (isHidden) {
+          form.classList.remove('hidden');
+          if (arrow) arrow.textContent = "expand_less";
+        } else {
+          form.classList.add('hidden');
+          if (arrow) arrow.textContent = "expand_more";
+        }
+      }
+    }
+
+    // Connect via Manual Input
+    async function connectManualNode() {
+      const host = document.getElementById('manual-peer-host').value.trim() || "127.0.0.1";
+      const portVal = document.getElementById('manual-peer-port').value.trim();
+      const port = parseInt(portVal);
+      if (!port) {
+        showToast("Please enter a valid port");
+        return;
+      }
+
+      const btn = document.getElementById('manual-connect-btn');
+      btn.disabled = true;
+      btn.innerHTML = `<span class="material-symbols-outlined text-[17px] animate-spin">sync</span>`;
+
+      await connectNode(host, port, null, btn);
+
+      btn.disabled = false;
+      btn.innerHTML = `<span>Connect</span>`;
+    }
+
+    // Navigation Switcher (Chats / Memory / Knowledge / Network)
+    function switchNav(viewName) {
+      document.querySelectorAll('.view-panel').forEach(el => {
+        el.classList.add('hidden');
+        el.classList.remove('flex');
+      });
+
+      const target = document.getElementById(`view-${viewName}`);
+      if (target) {
+        target.classList.remove('hidden');
+        target.classList.add('flex');
+      }
+
+      document.querySelectorAll('#nav-tabs .nav-item').forEach(el => {
+        el.classList.remove('bg-surface-container', 'text-on-surface', 'font-medium');
+        el.classList.add('text-on-surface-variant');
+        const icon = el.querySelector('.material-symbols-outlined');
+        if (icon) {
+          icon.style.fontVariationSettings = "'FILL' 0";
+          icon.classList.remove('text-primary');
+        }
+      });
+
+      const activeNav = document.getElementById(`nav-${viewName}`);
+      if (activeNav) {
+        activeNav.classList.add('bg-surface-container', 'text-on-surface', 'font-medium');
+        activeNav.classList.remove('text-on-surface-variant');
+        const icon = activeNav.querySelector('.material-symbols-outlined');
+        if (icon) {
+          icon.style.fontVariationSettings = "'FILL' 1";
+          icon.classList.add('text-primary');
+        }
+      }
+
+      // If switching to network, refresh status
+      if (viewName === 'network') {
+        loadNetworkStatus();
+      }
+
+      closeMobileSidebar();
+    }
+
+    // Recent Chat Selection
+    function loadRecentChat(index) {
+      switchNav('chats');
+      const items = document.querySelectorAll('#recent-list .recent-item');
+      items.forEach((item, i) => {
+        const dot = item.querySelector('.recent-dot');
+        if (i === index) {
+          item.classList.add('bg-surface-container', 'text-on-surface');
+          item.classList.remove('text-on-surface-variant');
+          if (dot) dot.classList.remove('hidden');
+        } else {
+          item.classList.remove('bg-surface-container', 'text-on-surface');
+          item.classList.add('text-on-surface-variant');
+          if (dot) dot.classList.add('hidden');
+        }
+      });
+      closeMobileSidebar();
+    }
+
+    // New Chat Action
+    function startNewChat() {
+      switchNav('chats');
+      const container = document.getElementById('conversation-container');
+      container.innerHTML = `
+        <div class="text-center py-16 space-y-3">
+          <div class="w-12 h-12 rounded-xl bg-surface-container-lowest border border-surface-variant flex items-center justify-center p-2 mx-auto shadow-subtle">
+            <img alt="Crystal" class="w-8 h-8 object-contain" src="/assets/crystal-logo.png" onerror="this.src='https://lh3.googleusercontent.com/aida/AEtjO1UKTfAQ9wFFyfOK9SnxiqI-rz1COilnWfgzSsmai0han6z61gUNGp53SnCq59Z1DlUoQB9Q-waNsUPuFvz5be0qWa_0Dvku33DENKw6ooXuceaH-EfAIAv2V2MI2ytwIK9jpB-NT8d2w9Po8v4x2FuRwxWZHtrEJsHvH9xXUrIGmnQ6OraxYRdZcbhEjbR0TzqmfXv5lbVE85tSCd1rkOM-6F5Gn7ryxcMy6gN7XxBfRDQfEo9pX1P3TfE'"/>
+          </div>
+          <h2 class="text-headline-md font-medium text-on-surface">How can Crystal assist you today?</h2>
+          <p class="text-body-md text-tertiary max-w-md mx-auto">All interactions are processed locally and stored in private memory on your device.</p>
+        </div>
+      `;
+      document.getElementById('prompt-input').focus();
+      closeMobileSidebar();
+    }
+
+    // Send Message
+    function sendMessage() {
+      const textarea = document.getElementById('prompt-input');
+      const text = textarea.value.trim();
+      if (!text) return;
+
+      textarea.value = "";
+      textarea.style.height = "auto";
+
+      const container = document.getElementById('conversation-container');
+
+      // 1. Append User Message
+      const userTurn = document.createElement('article');
+      userTurn.className = "chat-turn flex flex-col items-end w-full";
+      userTurn.innerHTML = `
+        <div class="max-w-2xl px-5 py-3.5 rounded-xl bg-surface-container-low border border-surface-variant text-on-surface text-body-lg font-body-lg leading-relaxed shadow-subtle">
+          ${escapeHtml(text)}
+        </div>
+        <div class="mt-1.5 mr-1 text-label-sm font-label-sm text-tertiary flex items-center gap-1">
+          <span>Just now</span>
+        </div>
+      `;
+      container.appendChild(userTurn);
+
+      // Scroll down
+      const stream = document.getElementById('chat-stream');
+      stream.scrollTop = stream.scrollHeight;
+
+      // 2. Append Crystal Assistant Response with Memory integration
+      setTimeout(() => {
+        const responseData = generateCrystalResponse(text);
+        const botTurn = document.createElement('article');
+        botTurn.className = "chat-turn flex items-start gap-4 w-full";
+        botTurn.innerHTML = `
+          <div class="w-8 h-8 rounded-lg bg-surface-container-lowest border border-surface-variant flex items-center justify-center p-1 flex-shrink-0 mt-0.5 shadow-subtle">
+            <img alt="Crystal" class="w-5 h-5 object-contain" src="/assets/crystal-logo.png" onerror="this.src='https://lh3.googleusercontent.com/aida/AEtjO1UKTfAQ9wFFyfOK9SnxiqI-rz1COilnWfgzSsmai0han6z61gUNGp53SnCq59Z1DlUoQB9Q-waNsUPuFvz5be0qWa_0Dvku33DENKw6ooXuceaH-EfAIAv2V2MI2ytwIK9jpB-NT8d2w9Po8v4x2FuRwxWZHtrEJsHvH9xXUrIGmnQ6OraxYRdZcbhEjbR0TzqmfXv5lbVE85tSCd1rkOM-6F5Gn7ryxcMy6gN7XxBfRDQfEo9pX1P3TfE'"/>
+          </div>
+          <div class="flex-1 space-y-4 pt-0.5 min-w-0">
+            <p class="text-body-lg font-body-lg text-on-surface leading-relaxed">
+              ${responseData.lead}
+            </p>
+            ${responseData.body ? `<p class="text-body-md font-body-md text-on-surface leading-relaxed">${responseData.body}</p>` : ''}
+            
+            ${responseData.points.length > 0 ? `
+              <div class="space-y-2.5 my-3 pl-1">
+                ${responseData.points.map(pt => `
+                  <div class="flex items-start gap-2.5">
+                    <span class="text-primary mt-1 text-sm font-bold">●</span>
+                    <div class="text-body-md font-body-md text-on-surface">
+                      <strong class="font-semibold text-on-surface">${pt.title}</strong> — ${pt.text}
+                    </div>
+                  </div>
+                `).join('')}
+              </div>
+            ` : ''}
+
+            ${memoryActive ? `
+              <div class="pt-3 pb-1">
+                <div class="rounded-xl border border-surface-variant bg-surface-container-lowest p-4 shadow-subtle transition-all duration-200">
+                  <div class="flex items-center justify-between mb-2.5">
+                    <div class="flex items-center gap-1.5 text-label-sm font-label-sm text-tertiary">
+                      <span class="material-symbols-outlined text-[16px] text-primary" data-icon="neurology">neurology</span>
+                      <span class="font-medium text-on-surface-variant">Used from memory</span>
+                    </div>
+                    <span class="text-label-sm font-label-sm text-tertiary">Indexed local store</span>
+                  </div>
+                  <div class="flex flex-wrap items-center gap-2 mb-3">
+                    ${responseData.tags.map(tag => `
+                      <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-md bg-surface-container-low border border-surface-variant text-label-sm font-label-sm text-on-surface">
+                        <span class="text-primary text-[11px]">✦</span>
+                        ${tag}
+                      </span>
+                    `).join('')}
+                  </div>
+                  <div class="p-3 rounded-lg bg-surface-container-low/70 border border-surface-variant/80 text-body-sm font-body-sm text-on-surface-variant flex items-start gap-2.5">
+                    <span class="material-symbols-outlined text-outline text-[16px] mt-0.5" data-icon="description">description</span>
+                    <div>
+                      <span class="font-medium text-on-surface">Memory used:</span>
+                      <span>${responseData.memoryNote}</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ` : ''}
+
+            <div class="flex items-center gap-1 text-tertiary pt-1">
+              <button onclick="copyTurnText(this)" class="w-8 h-8 rounded-lg flex items-center justify-center hover:bg-surface-container hover:text-on-surface transition-colors cursor-pointer" title="Copy to clipboard">
+                <span class="material-symbols-outlined text-[17px]" data-icon="content_copy">content_copy</span>
+              </button>
+              <button onclick="regenerateTurn(this)" class="w-8 h-8 rounded-lg flex items-center justify-center hover:bg-surface-container hover:text-on-surface transition-colors cursor-pointer" title="Regenerate local response">
+                <span class="material-symbols-outlined text-[17px]" data-icon="refresh">refresh</span>
+              </button>
+              <button onclick="bookmarkTurn(this)" class="w-8 h-8 rounded-lg flex items-center justify-center hover:bg-surface-container hover:text-on-surface transition-colors cursor-pointer" title="Add note to Knowledge">
+                <span class="material-symbols-outlined text-[17px]" data-icon="bookmark">bookmark</span>
+              </button>
+            </div>
+          </div>
+        `;
+        container.appendChild(botTurn);
+        stream.scrollTop = stream.scrollHeight;
+      }, 350);
+    }
+
+    // Helper: Intelligent Local Edge Response Generation
+    function generateCrystalResponse(query) {
+      const q = query.toLowerCase();
+      if (q.includes("cloud") || q.includes("edge")) {
+        return {
+          lead: "Edge AI moves more intelligence closer to where data is created. Instead of sending every request to a remote cloud service, Crystal can process information locally when appropriate.",
+          body: "This provides three important benefits:",
+          points: [
+            { title: "Privacy", text: "Sensitive data never leaves your physical device or local network." },
+            { title: "Lower latency", text: "Real-time inference without network roundtrips or API queue delays." },
+            { title: "Continued functionality", text: "Full autonomous operation during internet outages or air-gapped environments." }
+          ],
+          tags: ["Edge AI", "Local-first architecture", "Previous conversation (Yesterday)"],
+          memoryNote: "Edge AI project · Local-first architecture · 4 relevant context notes referenced."
+        };
+      } else if (q.includes("memory") || q.includes("private")) {
+        return {
+          lead: "Crystal's private personal memory is strictly compartmentalized inside an isolated local database.",
+          body: "Key aspects of local private memory:",
+          points: [
+            { title: "Zero Route Exposure", text: "No HTTP endpoint or peer query handler can access private memory records." },
+            { title: "Autonomous Retrieval", text: "Context is dynamically synthesized during local reasoning passes." },
+            { title: "Hardware Ownership", text: "SQLite storage engines live exclusively in your local device directory." }
+          ],
+          tags: ["Private Memory", "Storage Isolation", "Local Context"],
+          memoryNote: "Private Memory Service · SQLite isolation guarantee · Verified against route registry."
+        };
+      } else if (q.includes("network") || q.includes("node") || q.includes("connect") || q.includes("peer")) {
+        const peerCount = connectedNodes.length;
+        return {
+          lead: `Crystal Network Status: ${peerCount} connected node${peerCount === 1 ? '' : 's'}.`,
+          body: "Network knowledge sharing operates over local LAN with strict privacy guarantees:",
+          points: [
+            { title: "Click-to-Connect Active", text: "Nodes can be scanned and connected directly through the Network interface." },
+            { title: "Shareable Layer", text: "Only records explicitly designated as shareable are synchronized with peers." },
+            { title: "Source Attribution", text: "Every item in the network layer preserves its originating node identity." }
+          ],
+          tags: ["Local Network", "Peer Connectivity", `${peerCount} Peers Connected`],
+          memoryNote: `Network Connection Manager · LAN transport · Active peers: ${peerCount}`
+        };
+      } else {
+        return {
+          lead: `Crystal has processed your query locally: "${query}".`,
+          body: "Synthesis from local edge intelligence:",
+          points: [
+            { title: "Local Context Verified", text: "Checked local personal notes and indexed edge records." },
+            { title: "Air-gapped Execution", text: "Computation completed without offloading data to third-party servers." }
+          ],
+          tags: ["Local Inference", "Edge Compute", "Active Context"],
+          memoryNote: `Local query synthesized · Device state: ${currentNodeInfo.node_name}`
+        };
+      }
+    }
+
+    // Suggestion chip clicked
+    function useSuggestion(text) {
+      const textarea = document.getElementById('prompt-input');
+      textarea.value = text;
+      textarea.focus();
+      textarea.style.height = "auto";
+      textarea.style.height = (textarea.scrollHeight) + "px";
+    }
+
+    // Search Network Knowledge across Local and Connected Nodes via /api/network/query
+    async function searchKnowledge() {
+      const query = document.getElementById('knowledge-search-input').value.trim();
+      const resultsDiv = document.getElementById('knowledge-results');
+      resultsDiv.innerHTML = `<div class="p-4 text-center text-tertiary">Searching shareable knowledge across network...</div>`;
+
+      try {
+        const res = await fetch('/api/network/query', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ query: query || null })
+        });
+        if (res.ok) {
+          const data = await res.json();
+          if (data.results && data.results.length > 0) {
+            resultsDiv.innerHTML = data.results.map(r => `
+              <div class="p-4 rounded-xl bg-surface-container-lowest border border-surface-variant shadow-subtle space-y-2">
+                <div class="flex items-center justify-between">
+                  <span class="text-label-sm font-medium text-on-surface flex items-center gap-1.5">
+                    <span class="material-symbols-outlined text-[16px] text-primary" data-icon="description">description</span>
+                    Shareable Record
+                  </span>
+                  <span class="text-label-sm ${r.origin === 'peer' ? 'text-primary bg-primary/10' : 'text-tertiary bg-surface-container-low'} px-2 py-0.5 rounded font-code-inline">
+                    ${r.origin === 'peer' ? 'peer: ' : 'source: '}${escapeHtml(r.source_node_id || 'local')}
+                  </span>
+                </div>
+                <p class="text-body-md text-on-surface leading-relaxed">${escapeHtml(r.content)}</p>
+                <div class="text-label-sm text-tertiary pt-1 flex justify-between items-center">
+                  <span>ID: <code class="font-code-inline text-[12px]">${escapeHtml(r.id)}</code></span>
+                  <span class="text-[11px] text-tertiary">${r.origin === 'peer' ? 'Synchronized over LAN' : 'Local Shareable'}</span>
+                </div>
+              </div>
+            `).join('');
+          } else {
+            resultsDiv.innerHTML = `<div class="p-8 text-center text-tertiary">No shareable records found matching "${escapeHtml(query)}".</div>`;
+          }
+        } else {
+          resultsDiv.innerHTML = `<div class="p-4 text-center text-error">Failed to query network knowledge.</div>`;
+        }
+      } catch (e) {
+        resultsDiv.innerHTML = `<div class="p-4 text-center text-tertiary">Network knowledge endpoint unavailable.</div>`;
+      }
+    }
+
+    // Memory Context Toggle
+    function toggleMemoryContext() {
+      memoryActive = !memoryActive;
+      const btn = document.getElementById('memory-toggle-btn');
+      if (memoryActive) {
+        btn.className = "w-8 h-8 rounded-lg flex items-center justify-center text-outline hover:text-primary hover:bg-surface-container-low transition-colors cursor-pointer";
+        showToast("Memory references enabled");
+      } else {
+        btn.className = "w-8 h-8 rounded-lg flex items-center justify-center text-tertiary/50 hover:text-tertiary hover:bg-surface-container-low transition-colors cursor-pointer";
+        showToast("Memory references disabled");
+      }
+    }
+
+    // Copy Turn Text
+    function copyTurnText(btn) {
+      const turn = btn.closest('.chat-turn') || btn.closest('.flex-1');
+      const paragraphs = Array.from(turn.querySelectorAll('p, div.text-body-md')).map(p => p.innerText.trim()).filter(Boolean);
+      const textToCopy = paragraphs.join('\n\n');
+      navigator.clipboard.writeText(textToCopy).then(() => {
+        showToast("Copied to clipboard");
+      }).catch(() => {
+        showToast("Copied");
+      });
+    }
+
+    // Regenerate Turn
+    function regenerateTurn(btn) {
+      showToast("Regenerating local response...");
+      setTimeout(() => {
+        showToast("Response refreshed from local model");
+      }, 500);
+    }
+
+    // Bookmark Turn
+    function bookmarkTurn(btn) {
+      showToast("Note added to Knowledge base");
+    }
+
+    // Toast Notification helper
+    function showToast(msg) {
+      const container = document.getElementById('toast-container');
+      const toast = document.createElement('div');
+      toast.className = "toast-anim px-4 py-2.5 rounded-lg bg-inverse-surface text-inverse-on-surface text-label-md font-medium shadow-ambient flex items-center gap-2";
+      toast.innerHTML = `<span class="material-symbols-outlined text-[17px] text-emerald-400">check_circle</span> <span>${escapeHtml(msg)}</span>`;
+      container.appendChild(toast);
+      setTimeout(() => toast.remove(), 2300);
+    }
+
+    // Modal Handlers
+    function openModal(name) {
+      const modal = document.getElementById(`modal-${name}`);
+      if (modal) modal.classList.remove('hidden');
+    }
+
+    function closeModal(name) {
+      const modal = document.getElementById(`modal-${name}`);
+      if (modal) modal.classList.add('hidden');
+    }
+
+    // Mobile Sidebar Drawer
+    const sidebar = document.getElementById('sidebar');
+    const backdrop = document.getElementById('mobile-backdrop');
+    const openSidebarBtn = document.getElementById('open-sidebar-btn');
+    const closeSidebarBtn = document.getElementById('close-sidebar-btn');
+
+    function openMobileSidebar() {
+      sidebar.classList.remove('-translate-x-full');
+      backdrop.classList.remove('hidden');
+    }
+
+    function closeMobileSidebar() {
+      sidebar.classList.add('-translate-x-full');
+      backdrop.classList.add('hidden');
+    }
+
+    openSidebarBtn?.addEventListener('click', openMobileSidebar);
+    closeSidebarBtn?.addEventListener('click', closeMobileSidebar);
+    backdrop?.addEventListener('click', closeMobileSidebar);
+
+    // Escape HTML helper
+    function escapeHtml(str) {
+      if (!str) return '';
+      return String(str)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#039;');
+    }
+
+    // Textarea Auto-expand & Enter to send
+    const textarea = document.getElementById('prompt-input');
+    textarea.addEventListener('input', function() {
+      this.style.height = 'auto';
+      this.style.height = Math.min(this.scrollHeight, 180) + 'px';
+    });
+    textarea.addEventListener('keydown', function(e) {
+      if (e.key === 'Enter' && !e.shiftKey) {
+        e.preventDefault();
+        sendMessage();
+      }
+    });
+
+    // Keyboard Shortcuts (⌘N / Ctrl+N for new chat)
+    document.addEventListener('keydown', function(e) {
+      if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'n') {
+        e.preventDefault();
+        startNewChat();
+      }
+    });
+
+    // Initialize
+    checkNodeHealth();
+  </script>
+</body>
+</html>

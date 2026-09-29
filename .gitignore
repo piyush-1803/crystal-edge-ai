@@ -20,3 +20,9 @@ data/*
 Thumbs.db
 .vscode/
 .idea/
+
+# Packaging
+build/
+dist/
+*.spec
+

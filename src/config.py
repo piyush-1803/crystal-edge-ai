@@ -1,20 +1,21 @@
 import os
 import json
-from dataclasses import dataclass, asdict
-from typing import Optional, Dict, Any
+from dataclasses import dataclass, field, asdict
+from typing import Optional, Dict, Any, List
 
 
 @dataclass
 class NodeConfig:
     """
     Crystal Node Configuration.
-    Defines identity, network binding, and local storage location for a node.
+    Defines identity, network binding, local storage location, and peer list for a node.
     """
     node_id: str = "node-a"
     node_name: str = "Crystal Node A"
     host: str = "127.0.0.1"
     port: int = 8001
     data_directory: str = "./data/node_a"
+    peers: List[Dict[str, Any]] = field(default_factory=list)
 
     def to_dict(self) -> Dict[str, Any]:
         return asdict(self)
@@ -27,6 +28,7 @@ class NodeConfig:
             host=str(data.get("host", "127.0.0.1")),
             port=int(data.get("port", 8001)),
             data_directory=str(data.get("data_directory", "./data/node_a")),
+            peers=list(data.get("peers", [])),
         )
 
     @classmethod
