@@ -6,6 +6,21 @@
   <title>Crystal · Your private AI</title>
   <link rel="icon" type="image/png" href="/assets/crystal-logo.png"/>
 
+  <!-- Instant Theme Initializer (prevents flash of wrong theme before DOM renders) -->
+  <script>
+    (function() {
+      try {
+        var stored = localStorage.getItem('crystal_theme');
+        var theme = stored || ((window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) ? 'dark' : 'light');
+        if (theme === 'dark') {
+          document.documentElement.classList.add('dark');
+        } else {
+          document.documentElement.classList.remove('dark');
+        }
+      } catch (e) {}
+    })();
+  </script>
+
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com" rel="preconnect"/>
   <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
@@ -23,49 +38,49 @@
             "error-container": "#ffdad6",
             "primary-fixed-dim": "#b9c3ff",
             "tertiary-container": "#757571",
-            "on-surface": "#1a1c1a",
-            "surface-variant": "#e3e2e0",
-            "background": "#faf9f6",
-            "surface-container-low": "#f4f3f1",
+            "on-surface": "rgb(var(--color-on-surface-rgb) / <alpha-value>)",
+            "surface-variant": "rgb(var(--color-surface-variant-rgb) / <alpha-value>)",
+            "background": "rgb(var(--color-background-rgb) / <alpha-value>)",
+            "surface-container-low": "rgb(var(--color-surface-container-low-rgb) / <alpha-value>)",
             "secondary-fixed-dim": "#bec6df",
-            "surface-container-highest": "#e3e2e0",
+            "surface-container-highest": "rgb(var(--color-surface-container-highest-rgb) / <alpha-value>)",
             "on-primary-fixed": "#001258",
             "on-error-container": "#93000a",
-            "secondary": "#565e74",
+            "secondary": "rgb(var(--color-secondary-rgb) / <alpha-value>)",
             "error": "#ba1a1a",
-            "inverse-surface": "#2f312f",
+            "inverse-surface": "rgb(var(--color-inverse-surface-rgb) / <alpha-value>)",
             "on-primary-fixed-variant": "#0c34bd",
-            "primary-container": "#4c68ec",
-            "secondary-container": "#dae2fc",
-            "surface-container-lowest": "#ffffff",
-            "surface-bright": "#faf9f6",
-            "surface": "#faf9f6",
+            "primary-container": "rgb(var(--color-primary-container-rgb) / <alpha-value>)",
+            "secondary-container": "rgb(var(--color-secondary-container-rgb) / <alpha-value>)",
+            "surface-container-lowest": "rgb(var(--color-surface-container-lowest-rgb) / <alpha-value>)",
+            "surface-bright": "rgb(var(--color-surface-rgb) / <alpha-value>)",
+            "surface": "rgb(var(--color-surface-rgb) / <alpha-value>)",
             "secondary-fixed": "#dae2fc",
-            "surface-dim": "#dbdad7",
+            "surface-dim": "rgb(var(--color-surface-variant-rgb) / <alpha-value>)",
             "on-primary-container": "#fffbff",
             "tertiary-fixed-dim": "#c8c6c2",
             "primary-fixed": "#dee1ff",
-            "outline-variant": "#c5c5d7",
+            "outline-variant": "rgb(var(--color-outline-variant-rgb) / <alpha-value>)",
             "on-secondary-fixed-variant": "#3e465b",
             "tertiary-fixed": "#e4e2dd",
-            "tertiary": "#5c5c58",
-            "outline": "#757686",
+            "tertiary": "rgb(var(--color-tertiary-rgb) / <alpha-value>)",
+            "outline": "rgb(var(--color-outline-rgb) / <alpha-value>)",
             "on-secondary-fixed": "#131b2e",
-            "surface-container-high": "#e9e8e5",
+            "surface-container-high": "rgb(var(--color-surface-container-high-rgb) / <alpha-value>)",
             "inverse-primary": "#b9c3ff",
             "on-secondary": "#ffffff",
-            "on-surface-variant": "#444654",
-            "on-background": "#1a1c1a",
-            "primary": "#2f4ed2",
+            "on-surface-variant": "rgb(var(--color-on-surface-variant-rgb) / <alpha-value>)",
+            "on-background": "rgb(var(--color-on-background-rgb) / <alpha-value>)",
+            "primary": "rgb(var(--color-primary-rgb) / <alpha-value>)",
             "on-primary": "#ffffff",
             "on-tertiary-fixed": "#1b1c19",
             "on-tertiary-container": "#fefcf7",
-            "inverse-on-surface": "#f2f1ee",
-            "on-secondary-container": "#5c647a",
+            "inverse-on-surface": "rgb(var(--color-inverse-on-surface-rgb) / <alpha-value>)",
+            "on-secondary-container": "rgb(var(--color-on-secondary-container-rgb) / <alpha-value>)",
             "on-tertiary-fixed-variant": "#474744",
-            "surface-tint": "#3250d5",
+            "surface-tint": "rgb(var(--color-primary-rgb) / <alpha-value>)",
             "on-tertiary": "#ffffff",
-            "surface-container": "#efeeeb",
+            "surface-container": "rgb(var(--color-surface-container-rgb) / <alpha-value>)",
             "on-error": "#ffffff"
           },
           "borderRadius": {
@@ -120,6 +135,58 @@
     }
   </script>
   <style>
+    :root {
+      --color-surface-rgb: 250 249 246; /* #faf9f6 */
+      --color-background-rgb: 250 249 246;
+      --color-on-surface-rgb: 26 28 26; /* #1a1c1a */
+      --color-on-background-rgb: 26 28 26;
+      --color-surface-container-low-rgb: 244 243 241; /* #f4f3f1 */
+      --color-surface-container-lowest-rgb: 255 255 255; /* #ffffff */
+      --color-surface-container-rgb: 239 238 235; /* #efeeeb */
+      --color-surface-container-high-rgb: 233 232 229; /* #e9e8e5 */
+      --color-surface-container-highest-rgb: 227 226 224; /* #e3e2e0 */
+      --color-surface-variant-rgb: 227 226 224; /* #e3e2e0 */
+      --color-on-surface-variant-rgb: 68 70 84; /* #444654 */
+      --color-tertiary-rgb: 92 92 88; /* #5c5c58 */
+      --color-outline-rgb: 117 118 134; /* #757686 */
+      --color-outline-variant-rgb: 197 197 215; /* #c5c5d7 */
+      --color-primary-rgb: 47 78 210; /* #2f4ed2 */
+      --color-primary-container-rgb: 76 104 236; /* #4c68ec */
+      --color-secondary-rgb: 86 94 116; /* #565e74 */
+      --color-secondary-container-rgb: 218 226 252; /* #dae2fc */
+      --color-on-secondary-container-rgb: 92 100 122; /* #5c647a */
+      --color-inverse-surface-rgb: 47 49 47; /* #2f312f */
+      --color-inverse-on-surface-rgb: 242 241 238; /* #f2f1ee */
+    }
+
+    html.dark {
+      --color-surface-rgb: 18 19 22; /* #121316 refined warm obsidian/charcoal */
+      --color-background-rgb: 18 19 22;
+      --color-on-surface-rgb: 242 240 235; /* #f2f0eb warm ivory/off-white text */
+      --color-on-background-rgb: 242 240 235;
+      --color-surface-container-low-rgb: 24 25 30; /* #18191e sidebar */
+      --color-surface-container-lowest-rgb: 31 33 39; /* #1f2127 cards, floating dock */
+      --color-surface-container-rgb: 38 40 48; /* #262830 active tabs, pill buttons */
+      --color-surface-container-high-rgb: 45 48 57; /* #2d3039 elevated states */
+      --color-surface-container-highest-rgb: 53 56 66; /* #353842 */
+      --color-surface-variant-rgb: 42 45 54; /* #2a2d36 borders */
+      --color-on-surface-variant-rgb: 168 171 184; /* #a8abb8 secondary text */
+      --color-tertiary-rgb: 136 140 152; /* #888c98 muted labels */
+      --color-outline-rgb: 96 100 114; /* #606472 placeholders, secondary icons */
+      --color-outline-variant-rgb: 48 51 61; /* #30333d */
+      --color-primary-rgb: 235 160 48; /* #eba030 glowing golden amber matching crystal logo */
+      --color-primary-container-rgb: 60 48 24; /* #3c3018 */
+      --color-secondary-rgb: 158 164 180; /* #9ea4b4 */
+      --color-secondary-container-rgb: 44 48 58; /* #2c303a */
+      --color-on-secondary-container-rgb: 218 222 234; /* #dadeea */
+      --color-inverse-surface-rgb: 242 240 235; /* #f2f0eb */
+      --color-inverse-on-surface-rgb: 24 25 30; /* #18191e */
+    }
+
+    body, aside, header, main, .view-panel, button, input, textarea {
+      transition: background-color 150ms ease, border-color 150ms ease, color 150ms ease;
+    }
+
     .material-symbols-outlined {
       font-variation-settings: 'FILL' 0, 'wght' 350, 'GRAD' 0, 'opsz' 20;
       font-size: 19px;
@@ -134,8 +201,11 @@
       background: transparent;
     }
     .custom-scroll::-webkit-scrollbar-thumb {
-      background: #e3e2e0;
+      background: rgb(var(--color-surface-variant-rgb) / 0.8);
       border-radius: 4px;
+    }
+    .custom-scroll::-webkit-scrollbar-thumb:hover {
+      background: rgb(var(--color-outline-rgb) / 0.6);
     }
     @keyframes fadeInOut {
       0% { opacity: 0; transform: translateY(8px); }
@@ -261,8 +331,11 @@
         <span class="text-label-md font-label-md text-tertiary hidden sm:inline">Your private AI</span>
       </div>
 
-      <!-- Right: Trailing Actions (Lock, Dns) -->
+      <!-- Right: Trailing Actions (Theme, Lock, Dns) -->
       <div class="flex items-center gap-1 text-on-surface-variant flex-shrink-0">
+        <button id="theme-toggle-btn" onclick="toggleTheme()" class="p-2 rounded-lg hover:bg-surface-container-low hover:text-on-surface transition-colors duration-150 ease-in-out cursor-pointer" title="Toggle theme (Dark / Light)">
+          <span id="theme-icon" class="material-symbols-outlined text-[19px]">dark_mode</span>
+        </button>
         <button onclick="openModal('security')" class="p-2 rounded-lg hover:bg-surface-container-low hover:text-on-surface transition-colors duration-150 ease-in-out cursor-pointer" title="Air-gapped &amp; Encrypted">
           <span class="material-symbols-outlined text-[19px]" data-icon="lock">lock</span>
         </button>
@@ -719,6 +792,13 @@
         <div class="flex justify-between py-2 border-b border-surface-variant/50">
           <span class="text-tertiary">Design System</span>
           <span class="font-medium text-on-surface">Ivory Editorial / Geist</span>
+        </div>
+        <div class="flex items-center justify-between py-2 border-b border-surface-variant/50">
+          <span class="text-tertiary">Appearance</span>
+          <button onclick="toggleTheme()" class="px-2.5 py-1 rounded-md bg-surface-container hover:bg-surface-container-high text-on-surface text-label-sm font-medium transition-colors flex items-center gap-1.5 cursor-pointer">
+            <span id="settings-theme-icon" class="material-symbols-outlined text-[16px]">dark_mode</span>
+            <span id="settings-theme-text">Dark Mode</span>
+          </button>
         </div>
       </div>
 
@@ -1207,7 +1287,7 @@
     }
 
     // Send Message
-    function sendMessage() {
+    async function sendMessage() {
       const textarea = document.getElementById('prompt-input');
       const text = textarea.value.trim();
       if (!text) return;
@@ -1243,80 +1323,138 @@
       const stream = document.getElementById('chat-stream');
       stream.scrollTop = stream.scrollHeight;
 
-      // 2. Append Crystal Assistant Response with Memory integration
-      setTimeout(() => {
-        const responseData = generateCrystalResponse(text);
-        const botTurn = document.createElement('article');
-        botTurn.className = "chat-turn flex items-start gap-4 w-full";
-        botTurn.innerHTML = `
-          <div class="w-8 h-8 rounded-lg bg-surface-container-lowest border border-surface-variant flex items-center justify-center p-1 flex-shrink-0 mt-0.5 shadow-subtle">
-            <img alt="Crystal" class="w-5 h-5 object-contain" src="/assets/crystal-logo.png" onerror="this.src='https://lh3.googleusercontent.com/aida/AEtjO1UKTfAQ9wFFyfOK9SnxiqI-rz1COilnWfgzSsmai0han6z61gUNGp53SnCq59Z1DlUoQB9Q-waNsUPuFvz5be0qWa_0Dvku33DENKw6ooXuceaH-EfAIAv2V2MI2ytwIK9jpB-NT8d2w9Po8v4x2FuRwxWZHtrEJsHvH9xXUrIGmnQ6OraxYRdZcbhEjbR0TzqmfXv5lbVE85tSCd1rkOM-6F5Gn7ryxcMy6gN7XxBfRDQfEo9pX1P3TfE'"/>
+      // 2. Append Assistant Turn with Loading Slot
+      const botTurn = document.createElement('article');
+      botTurn.className = "chat-turn flex items-start gap-4 w-full";
+      botTurn.innerHTML = `
+        <div class="w-8 h-8 rounded-lg bg-surface-container-lowest border border-surface-variant flex items-center justify-center p-1 flex-shrink-0 mt-0.5 shadow-subtle">
+          <img alt="Crystal" class="w-5 h-5 object-contain" src="/assets/crystal-logo.png" onerror="this.src='https://lh3.googleusercontent.com/aida/AEtjO1UKTfAQ9wFFyfOK9SnxiqI-rz1COilnWfgzSsmai0han6z61gUNGp53SnCq59Z1DlUoQB9Q-waNsUPuFvz5be0qWa_0Dvku33DENKw6ooXuceaH-EfAIAv2V2MI2ytwIK9jpB-NT8d2w9Po8v4x2FuRwxWZHtrEJsHvH9xXUrIGmnQ6OraxYRdZcbhEjbR0TzqmfXv5lbVE85tSCd1rkOM-6F5Gn7ryxcMy6gN7XxBfRDQfEo9pX1P3TfE'"/>
+        </div>
+        <div class="flex-1 space-y-3 pt-0.5 min-w-0" id="bot-slot">
+          <div class="flex items-center gap-2 text-tertiary py-1">
+            <span class="inline-block w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+            <p class="text-body-md font-body-md text-tertiary italic">Synthesizing local response...</p>
           </div>
-          <div class="flex-1 space-y-4 pt-0.5 min-w-0">
-            <p class="text-body-lg font-body-lg text-on-surface leading-relaxed">
-              ${responseData.lead}
-            </p>
-            ${responseData.body ? `<p class="text-body-md font-body-md text-on-surface leading-relaxed">${responseData.body}</p>` : ''}
-            
-            ${responseData.points.length > 0 ? `
-              <div class="space-y-2.5 my-3 pl-1">
-                ${responseData.points.map(pt => `
-                  <div class="flex items-start gap-2.5">
-                    <span class="text-primary mt-1 text-sm font-bold">●</span>
-                    <div class="text-body-md font-body-md text-on-surface">
-                      <strong class="font-semibold text-on-surface">${pt.title}</strong> — ${pt.text}
-                    </div>
-                  </div>
+        </div>
+      `;
+      container.appendChild(botTurn);
+      stream.scrollTop = stream.scrollHeight;
+
+      const slot = botTurn.querySelector('#bot-slot');
+
+      try {
+        const res = await fetch('/api/chat', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ query: text })
+        });
+
+        if (res.ok) {
+          const data = await res.json();
+          renderAssistantResponse(slot, data);
+        } else {
+          renderModelUnavailableNotice(slot, "Local model unavailable. Crystal is still running, but answer generation is not active.");
+        }
+      } catch (err) {
+        renderModelUnavailableNotice(slot, "Local model unavailable. Crystal is still running, but answer generation is not active.");
+      }
+      stream.scrollTop = stream.scrollHeight;
+    }
+
+    // Render Assistant Response from /api/chat
+    function renderAssistantResponse(slot, data) {
+      if (!slot) return;
+
+      if (!data.model_available) {
+        renderModelUnavailableNotice(slot, data.answer || "Local model unavailable. Crystal is still running, but answer generation is not active.");
+        return;
+      }
+
+      const paragraphs = escapeHtml(data.answer).split('\n\n').filter(p => p.trim());
+      const mainHtml = paragraphs.map(p => `
+        <p class="text-body-lg font-body-lg text-on-surface leading-relaxed">${p.replace(/\n/g, '<br/>')}</p>
+      `).join('');
+
+      let sourcesHtml = '';
+      if (data.sources && data.sources.length > 0) {
+        sourcesHtml = `
+          <div class="pt-2">
+            <div class="rounded-xl border border-surface-variant bg-surface-container-lowest p-3.5 shadow-subtle space-y-2">
+              <div class="flex items-center justify-between text-label-sm font-label-sm text-tertiary">
+                <div class="flex items-center gap-1.5">
+                  <span class="material-symbols-outlined text-[16px] text-primary" data-icon="hub">hub</span>
+                  <span class="font-medium text-on-surface-variant">Retrieved Network Knowledge</span>
+                </div>
+                <span>${data.sources.length} record${data.sources.length === 1 ? '' : 's'}</span>
+              </div>
+              <div class="flex flex-wrap gap-1.5">
+                ${data.sources.map(s => `
+                  <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-md ${s.origin === 'peer' ? 'bg-primary/10 text-primary border border-primary/20' : 'bg-surface-container-low text-on-surface border border-surface-variant'} text-label-sm font-code-inline">
+                    <span>${s.origin === 'peer' ? 'peer:' : 'local:'}</span>
+                    <strong>${escapeHtml(s.source_node_id || 'node')}</strong>
+                  </span>
                 `).join('')}
               </div>
-            ` : ''}
-
-            ${memoryActive ? `
-              <div class="pt-3 pb-1">
-                <div class="rounded-xl border border-surface-variant bg-surface-container-lowest p-4 shadow-subtle transition-all duration-200">
-                  <div class="flex items-center justify-between mb-2.5">
-                    <div class="flex items-center gap-1.5 text-label-sm font-label-sm text-tertiary">
-                      <span class="material-symbols-outlined text-[16px] text-primary" data-icon="neurology">neurology</span>
-                      <span class="font-medium text-on-surface-variant">Used from memory</span>
-                    </div>
-                    <span class="text-label-sm font-label-sm text-tertiary">Indexed local store</span>
-                  </div>
-                  <div class="flex flex-wrap items-center gap-2 mb-3">
-                    ${responseData.tags.map(tag => `
-                      <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-md bg-surface-container-low border border-surface-variant text-label-sm font-label-sm text-on-surface">
-                        <span class="text-primary text-[11px]">✦</span>
-                        ${tag}
-                      </span>
-                    `).join('')}
-                  </div>
-                  <div class="p-3 rounded-lg bg-surface-container-low/70 border border-surface-variant/80 text-body-sm font-body-sm text-on-surface-variant flex items-start gap-2.5">
-                    <span class="material-symbols-outlined text-outline text-[16px] mt-0.5" data-icon="description">description</span>
-                    <div>
-                      <span class="font-medium text-on-surface">Memory used:</span>
-                      <span>${responseData.memoryNote}</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            ` : ''}
-
-            <div class="flex items-center gap-1 text-tertiary pt-1">
-              <button onclick="copyTurnText(this)" class="w-8 h-8 rounded-lg flex items-center justify-center hover:bg-surface-container hover:text-on-surface transition-colors cursor-pointer" title="Copy to clipboard">
-                <span class="material-symbols-outlined text-[17px]" data-icon="content_copy">content_copy</span>
-              </button>
-              <button onclick="regenerateTurn(this)" class="w-8 h-8 rounded-lg flex items-center justify-center hover:bg-surface-container hover:text-on-surface transition-colors cursor-pointer" title="Regenerate local response">
-                <span class="material-symbols-outlined text-[17px]" data-icon="refresh">refresh</span>
-              </button>
-              <button onclick="bookmarkTurn(this)" class="w-8 h-8 rounded-lg flex items-center justify-center hover:bg-surface-container hover:text-on-surface transition-colors cursor-pointer" title="Add note to Knowledge">
-                <span class="material-symbols-outlined text-[17px]" data-icon="bookmark">bookmark</span>
-              </button>
             </div>
           </div>
         `;
-        container.appendChild(botTurn);
-        stream.scrollTop = stream.scrollHeight;
-      }, 350);
+      }
+
+      let memoryHtml = '';
+      if (data.memory_used && memoryActive) {
+        memoryHtml = `
+          <div class="pt-2">
+            <div class="rounded-xl border border-surface-variant bg-surface-container-lowest p-3.5 shadow-subtle">
+              <div class="flex items-center gap-1.5 text-label-sm font-label-sm text-tertiary mb-1">
+                <span class="material-symbols-outlined text-[16px] text-primary" data-icon="neurology">neurology</span>
+                <span class="font-medium text-on-surface-variant">Used from private memory</span>
+              </div>
+              <p class="text-body-sm text-on-surface-variant">Local private memory context incorporated into edge reasoning pass (strictly on-device).</p>
+            </div>
+          </div>
+        `;
+      }
+
+      const actionsHtml = `
+        <div class="flex items-center gap-1 text-tertiary pt-1">
+          <button onclick="copyTurnText(this)" class="w-8 h-8 rounded-lg flex items-center justify-center hover:bg-surface-container hover:text-on-surface transition-colors cursor-pointer" title="Copy to clipboard">
+            <span class="material-symbols-outlined text-[17px]" data-icon="content_copy">content_copy</span>
+          </button>
+          <button onclick="regenerateTurn(this)" class="w-8 h-8 rounded-lg flex items-center justify-center hover:bg-surface-container hover:text-on-surface transition-colors cursor-pointer" title="Regenerate local response">
+            <span class="material-symbols-outlined text-[17px]" data-icon="refresh">refresh</span>
+          </button>
+          <button onclick="bookmarkTurn(this)" class="w-8 h-8 rounded-lg flex items-center justify-center hover:bg-surface-container hover:text-on-surface transition-colors cursor-pointer" title="Add note to Knowledge">
+            <span class="material-symbols-outlined text-[17px]" data-icon="bookmark">bookmark</span>
+          </button>
+        </div>
+      `;
+
+      slot.innerHTML = `
+        <div class="space-y-3">
+          ${mainHtml}
+          ${sourcesHtml}
+          ${memoryHtml}
+          ${actionsHtml}
+        </div>
+      `;
     }
+
+    // Render Clean Model Unavailable Notice
+    function renderModelUnavailableNotice(slot, message) {
+      if (!slot) return;
+      slot.innerHTML = `
+        <div class="p-4 rounded-xl bg-surface-container-low border border-surface-variant text-body-md text-on-surface space-y-2">
+          <div class="flex items-center gap-2 text-outline">
+            <span class="material-symbols-outlined text-[18px]" data-icon="info">info</span>
+            <span class="font-medium text-on-surface">Local Model Notice</span>
+          </div>
+          <p class="text-body-md text-on-surface leading-relaxed">
+            ${escapeHtml(message)}
+          </p>
+        </div>
+      `;
+    }
+
 
     // Helper: Intelligent Local Edge Response Generation
     function generateCrystalResponse(query) {
@@ -1535,6 +1673,64 @@
         startNewChat();
       }
     });
+
+    // Theme Management
+    const THEME_KEY = 'crystal_theme';
+
+    function getStoredTheme() {
+      try { return localStorage.getItem(THEME_KEY); } catch (e) { return null; }
+    }
+
+    function getSystemTheme() {
+      return (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) ? 'dark' : 'light';
+    }
+
+    function updateThemeUI(isDark) {
+      const headerIcon = document.getElementById('theme-icon');
+      if (headerIcon) {
+        headerIcon.textContent = isDark ? 'light_mode' : 'dark_mode';
+        headerIcon.title = isDark ? 'Switch to Light Mode' : 'Switch to Dark Mode';
+      }
+      const settingsIcon = document.getElementById('settings-theme-icon');
+      const settingsText = document.getElementById('settings-theme-text');
+      if (settingsIcon) settingsIcon.textContent = isDark ? 'light_mode' : 'dark_mode';
+      if (settingsText) settingsText.textContent = isDark ? 'Light Mode' : 'Dark Mode';
+    }
+
+    function applyTheme(theme, save = true) {
+      const isDark = theme === 'dark';
+      if (isDark) {
+        document.documentElement.classList.add('dark');
+      } else {
+        document.documentElement.classList.remove('dark');
+      }
+
+      if (save) {
+        try {
+          localStorage.setItem(THEME_KEY, theme);
+        } catch (e) {}
+      }
+
+      updateThemeUI(isDark);
+    }
+
+    function toggleTheme() {
+      const isCurrentDark = document.documentElement.classList.contains('dark');
+      const targetTheme = isCurrentDark ? 'light' : 'dark';
+      applyTheme(targetTheme, true);
+      showToast(targetTheme === 'dark' ? 'Dark mode enabled' : 'Light mode enabled');
+    }
+
+    if (window.matchMedia) {
+      window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
+        if (!getStoredTheme()) {
+          applyTheme(e.matches ? 'dark' : 'light', false);
+        }
+      });
+    }
+
+    // Initialize Theme UI state
+    updateThemeUI(document.documentElement.classList.contains('dark'));
 
     // Initialize
     checkNodeHealth();

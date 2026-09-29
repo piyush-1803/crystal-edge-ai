@@ -14,7 +14,9 @@ data/*
 !data/.gitkeep
 !data/node_a/
 data/node_a/*
-!data/node_a/shareable_articles/
+!data/node_a/shareable/
+data/node_a/shareable/*
+!data/node_a/shareable/articles/
 *.db
 *.sqlite
 
@@ -28,4 +30,10 @@ Thumbs.db
 build/
 dist/
 *.spec
+!crystal.spec
+
+# Local Model & Runtime Binaries
+bin/
+models/
+*.gguf
 

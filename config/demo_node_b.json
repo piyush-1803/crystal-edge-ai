@@ -1,0 +1,14 @@
+{
+  "node_id": "node-b",
+  "node_name": "Crystal Node B",
+  "host": "127.0.0.1",
+  "port": 8002,
+  "data_directory": "./data/node_b",
+  "peers": [
+    {
+      "node_id": "node-a",
+      "host": "127.0.0.1",
+      "port": 8001
+    }
+  ]
+}

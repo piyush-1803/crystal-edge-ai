@@ -88,7 +88,7 @@ def main():
     parser.add_argument(
         "--articles-dir",
         type=str,
-        default="data/node_a/shareable_articles",
+        default="data/node_a/shareable/articles",
         help="Path to directory containing .txt articles",
     )
     args = parser.parse_args()

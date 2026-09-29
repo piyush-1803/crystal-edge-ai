@@ -63,8 +63,8 @@ def test_duplicate_article_ingestion_prevention(tmp_path):
 
 
 def test_node_a_actual_articles_ingestion(tmp_path):
-    node_a_dir = Path("data/node_a/shareable_articles")
-    assert node_a_dir.exists(), "data/node_a/shareable_articles directory must exist"
+    node_a_dir = Path("data/node_a/shareable/articles")
+    assert node_a_dir.exists(), "data/node_a/shareable/articles directory must exist"
 
     data_dir = str(tmp_path / "node_a_data")
     config = NodeConfig(node_id="node-a", node_name="Node A Test", port=8001, data_directory=data_dir)
