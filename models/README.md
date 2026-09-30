@@ -1,12 +1,12 @@
 # Models Directory
 
-Place your quantized GGUF models in this directory.
+This directory contains the local LLM model weights tracked via **Git LFS**.
 
-### Default Model:
-* **File:** `SmolLM2-135M-Instruct.Q4_K_M.gguf` (~105 MB)
+### Default Included Model:
+* **File:** `SmolLM2-135M-Instruct.Q4_K_M.gguf` (~105 MB, tracked via Git LFS)
 * **Architecture:** SmolLM2 135M Instruct, quantized to 4-bit (Q4_K_M)
 
-### Download Command (PowerShell):
+A fresh clone with Git LFS pulls this model automatically. Alternatively, to re-fetch manually:
 ```powershell
-curl -L -o models/SmolLM2-135M-Instruct.Q4_K_M.gguf https://huggingface.co/HuggingFaceTB/SmolLM2-135M-Instruct-GGUF/resolve/main/SmolLM2-135M-Instruct.Q4_K_M.gguf
+git lfs pull
 ```
