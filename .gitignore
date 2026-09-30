@@ -33,7 +33,6 @@ dist/
 !crystal.spec
 
 # Local Model & Runtime Binaries
-bin/
-models/
+# Note: *.gguf weights (>100MB) are excluded due to GitHub 100MB limit
 *.gguf
 
